@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>用户注册</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/register.css">
+	<style type="text/css">
+		.form-horizontal{
+		    background: #fff;
+		    padding-bottom: 50px;
+		    border-radius: 15px;
+		    text-align:center;
+		}
+		.form-horizontal .heading{
+		    display: block;
+		    font-size: 35px;
+		    font-weight: 700;
+		    padding: 35px 0;
+		    border-bottom: 1px solid #f0f0f0;
+		    margin-bottom: 10px;
+		}
+		.form-horizontal .form-group{
+		    padding: 0 40px;
+		    margin: 0 0 25px 0;
+		    position: relative;
+		}
+		.form-horizontal .form-control{
+		    background: #f0f0f0;
+		    border: none;
+		    border-radius: 20px;
+		    box-shadow: none;
+		    padding: 0 20px 0 45px;
+		    height: 40px;
+		    transition: all 0.3s ease 0s;
+		}
+		.form-horizontal .form-control:focus{
+		    background: #e0e0e0;
+		    box-shadow: none;
+		    outline: 0 none;
+		}
+		.form-horizontal .form-group i{
+		    position: absolute;
+		    top: 12px;
+		    left: 60px;
+		    font-size: 17px;
+		    color: #c8c8c8;
+		    transition : all 0.5s ease 0s;
+		}
+		.form-horizontal .form-control:focus + i{
+		    color: #00b4ef;
+		}
+
+		}
+		.form-horizontal .text{
+		    float: left;
+		    margin-left: 7px;
+		    line-height: 20px;
+		    padding-top: 5px;
+		    text-transform: capitalize;
+		}
+		
+		.form-horizontal .btn{
+			width: 100px;
+		    float: center;
+		    font-size: 15px;
+		    color: #707070;
+		    background: rgb(202,233,236);
+		    border-radius: 30px;
+		    padding: 5px 15px;
+		    border: none;
+		    text-transform: capitalize;
+		    transition: all 0.5s ease 0s;
+	        margin-top: 10px;
+	       
+		}
+		
+		@media only screen and (max-width: 479px){
+		    .form-horizontal .form-group{
+		        padding: 0 25px;
+		    }
+		    .form-horizontal .form-group i{
+		        left: 45px;
+		    }
+		    .form-horizontal .btn{
+		        padding: 10px 20px;
+		    }
+		}
+	</style>
+	<!--[if IE]>
+		<script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+
+
+	<script>
+        function RegisterInputCheck() {
+            var user = document.getElementById("inputUsername");
+            console.log(user)
+            if(user.value == "") {
+                alert("用户名为空！");
+                return false;
+            }
+            var email = document.getElementById("inputEmail");
+
+            var pwd = document.getElementById("inputPassword");
+            if(pwd.value == "") {
+                alert("密码不能为空！")
+                return false;
+            }
+            var pwd2 = document.getElementById("inputPassword2");
+
+            $.ajax({
+                url: 'indexCon.php',
+                type: 'GET',
+                dataType: 'json',
+                data:{username:user.value,password:pwd.value},
+                success: function(data) {
+                    console.log(data);
+
+                },
+                error: function(data) {
+                    console.log(data)
+
+                }
+            })
+        }
+	</script>
+</head>
+<body>
+	
+	<div class="register" style="padding: 20px 0;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-offset-3 col-md-6">
+					<form class="form-horizontal">
+						<span class="heading">用户注册</span>
+						<div class="form-group">
+							<p align="left">用户名</p>
+							<input type="email" class="form-control" id="inputUsername" placeholder="请输入用户名" 
+								onfocus="if(this.placeholder=='请输入用户名') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入用户名'">							
+						</div>
+						<div class="form-group">
+							<p align="left">邮箱</p>
+							<input type="email" class="form-control" id="inputEmail" placeholder="请输入邮箱地址" 
+								onfocus="if(this.placeholder=='请输入邮箱地址') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入邮箱地址'">							
+						</div>
+						
+						<div class="form-group help">
+							<p align="left">密码</p>
+							<input type="password" class="form-control" id="inputPassword" placeholder="请输入密码" 
+								onfocus="if(this.placeholder=='请输入密码') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入密码'">													
+						</div>
+						
+						<div class="form-group reconfirm">
+							<p align="left">确认密码</p>
+							<input type="password" class="form-control" id="inputPassword2" placeholder="请再次输入密码"
+								onfocus="if(this.placeholder=='请再次输入密码') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请再次输入密码'">													
+						</div>					        
+                            <input type="button" class="btn"  value="注册" onclick="RegisterInputCheck()"/>
+						    <div>
+	                    	  <a href="login.html"><p style="text-align: center;margin-top: 20px;">注册成功？点击此处进行登陆</p></a>
+	                        </div>
+
+	                    
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

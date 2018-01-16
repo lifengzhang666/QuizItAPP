@@ -1,0 +1,26 @@
+{
+	"index.html": {
+		"resources": [
+			"css/demo.css",
+			"p2.html",
+			"index1.html",
+			"img/bg.jpg",
+			"js/jquery-1.8.3.min.js",
+			"js/mobile_date.js",
+			"css/mobile_date.css",
+			"css/demo2.css",
+			"css/normalize2.css",
+			"js/sideToggleExtended.js",
+			"js/velocity.min.js",
+			"css/style.css",
+			"js/jquery-1.11.0.min.js",
+			"css/normalize.css",
+			"css/comment.css",
+			"js/comment.js"
+		],
+		"refer": [
+			"p2.html",
+			"index1.html"
+		]
+	}
+}
