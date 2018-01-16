@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c743fe8-a0e2-461b-82dd-01104704b53e" name="Default" comment="新加很多文件">
+    <list default="true" id="4c743fe8-a0e2-461b-82dd-01104704b53e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/DirectoryTest/tplTest.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-responsive.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bootstrap.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bootstrap.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/google_font.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/google_jquery_112.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/google_jquery_202.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/moment.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/style-responsive.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/style.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/11111.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/222222.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/33333.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/55555.html" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,14 +20,21 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+            <state relative-caret-position="274">
+              <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,6 +43,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/11111.html" />
+        <option value="$PROJECT_DIR$/222222.html" />
+        <option value="$PROJECT_DIR$/33333.html" />
+        <option value="$PROJECT_DIR$/55555.html" />
+        <option value="$PROJECT_DIR$/jk.html" />
       </list>
     </option>
   </component>
@@ -91,6 +96,7 @@
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -118,12 +124,48 @@
       <option name="presentableId" value="Default" />
       <updated>1516031694045</updated>
       <workItem from="1516031695483" duration="263000" />
-      <workItem from="1516106038347" duration="275000" />
+      <workItem from="1516106038347" duration="1279000" />
     </task>
+    <task id="LOCAL-00001" summary="新加很多文件">
+      <created>1516106323262</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1516106323263</updated>
+    </task>
+    <task id="LOCAL-00002" summary="新加很多文件2">
+      <created>1516106425175</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1516106425175</updated>
+    </task>
+    <task id="LOCAL-00003" summary="新加111">
+      <created>1516106639680</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1516106639680</updated>
+    </task>
+    <task id="LOCAL-00004" summary="新加222">
+      <created>1516106667357</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1516106667357</updated>
+    </task>
+    <task id="LOCAL-00005" summary="新加222">
+      <created>1516106909691</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1516106909691</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="538000" />
+    <option name="totallyTimeSpent" value="1542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -157,17 +199,60 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新加很多文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="新加很多文件" />
+    <MESSAGE value="新加很多文件2" />
+    <MESSAGE value="新加111" />
+    <MESSAGE value="新加222" />
+    <option name="LAST_COMMIT_MESSAGE" value="新加222" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/11111.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/222222.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/33333.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/55555.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+        <state relative-caret-position="274">
+          <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jk.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
           <folding />
         </state>
       </provider>
