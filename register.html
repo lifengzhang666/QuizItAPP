@@ -142,6 +142,7 @@
 	<script>
 		function Register() {
 			//TODO:获取用户名、密码
+			//此处 user 是 id 为 inputUsername 的 html 元素
             var user = document.getElementById("inputUsername");
             if(user.value === "") {
                 alert("用户名为空！");
@@ -165,10 +166,10 @@
             console.log("123");
             //TODO：向数据库写入数据
 			$.ajax({
-				type:'get',
-				url:'MyRegister.php',
+                url:'MyRegister.php',
+				type:'GET',
 				dataType:'json',
-                data:{username:user,email:email,pwd:pwd},
+                data:{userName:user.value,email:email.value,passWord:pwd.value},
 				success:function (result) {
                     console.log(result);
                 },
