@@ -9,6 +9,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/register.css">
+	<script type="text/javascript" src="jquery.min.js"></script>
+
+
 	<style type="text/css">
 		.form-horizontal{
 		    background: #fff;
@@ -55,7 +58,7 @@
 		    color: #00b4ef;
 		}
 
-		}
+
 		.form-horizontal .text{
 		    float: left;
 		    margin-left: 7px;
@@ -94,6 +97,8 @@
 	<!--[if IE]>
 		<script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<![endif]-->
+
+
 </head>
 <body>
 	
@@ -125,7 +130,7 @@
 							<input type="password" class="form-control" id="RePassword" placeholder="请再次输入密码"
 								onfocus="if(this.placeholder=='请再次输入密码') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请再次输入密码'">													
 						</div>					        
-                            <input type="button" class="btn"  value="注册" onclick="location.href='index1.html'"/>					     
+                            <input type="button" class="btn"  value="注册" onclick="Register()"/>
 						    <div>
 	                    	  <a href="login.html"><p style="text-align: center;margin-top: 20px;">注册成功？点击此处进行登陆</p></a>
 	                        </div>
@@ -135,49 +140,45 @@
 		</div>
 	</div>
 	<script>
-        function InputCheck() {
+		function Register() {
+			//TODO:获取用户名、密码
             var user = document.getElementById("inputUsername");
-            if(user.value == "") {
+            if(user.value === "") {
                 alert("用户名为空！");
-                return false;
+                return;
             }
             var email = document.getElementById("inputEmail");
-            if(email.value == "") {
+            if(email.value === "") {
                 alert("密码不能为空！");
-                return false;
+                return;
             }
             var pwd = document.getElementById("inputPassword");
-            if(pwd.value == "") {
+            if(pwd.value === "") {
                 alert("密码不能为空！");
-                return false;
+                return;
             }
             var repwd = document.getElementById("RePassword");
-            if(repwd.value == "") {
-                alert("密码不能为空！");
-                return false;
+            if(repwd.value === "") {
+                alert("两次密码不同！");
+                return;
             }
-
-            $.ajax({
-                type: 'POST',
-                url: 'indexCon.php',
-                dataType: 'json',
-                data:{
-                    username:$("input[name=user]").val(),
-                    email:$("input[name=email]").val(),//获取input中name为username的值
-                    pwd:$("input[name=pwd]").val(), //获取input中name为pwd的值
-                    repwd:$("input[name=repwd]").val()
-				},
-                success: function(data) {
-
-                    console.log("success");
-
+            console.log("123");
+            //TODO：向数据库写入数据
+			$.ajax({
+				type:'get',
+				url:'MyRegister.php',
+				dataType:'json',
+                data:{username:user,email:email,pwd:pwd},
+				success:function (result) {
+                    console.log(result);
                 },
-                error: function(data) {
-                    console.log("error");
-
+				error:function (result) {
+                    console.log(result);
                 }
-            })
+			});
+            console.log("456");
         }
+
 	</script>
 </body>
 </html>
