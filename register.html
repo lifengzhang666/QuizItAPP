@@ -69,7 +69,7 @@
 
 		.form-horizontal .btn{
 			width: 100px;
-		    float: center;
+		    /*float: center;*/
 		    font-size: 15px;
 		    color: #707070;
 		    background: rgb(202,233,236);
@@ -163,13 +163,13 @@
                 alert("两次密码不同！");
                 return;
             }
-            console.log("123");
+            console.log("开始ajax");
             //TODO：向数据库写入数据
 			$.ajax({
-                url:'MyRegister.php',
-				type:'GET',
+                url:'DataManager.php',
+				type:'POST',
 				dataType:'json',
-                data:{userName:user.value,email:email.value,passWord:pwd.value},
+                data:{act:'register',username:user.value,email:email.value,password:pwd.value},
 				success:function (result) {
                     console.log(result);
                 },
@@ -177,7 +177,7 @@
                     console.log(result);
                 }
 			});
-            console.log("456");
+            console.log("结束ajax");
         }
 
 	</script>

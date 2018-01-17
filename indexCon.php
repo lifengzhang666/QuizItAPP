@@ -9,6 +9,7 @@ header("Content-Type:text/html;charset=utf-8");
 $dsn="mysql:dbname=testschema;host=localhost";
 $db_user='root';
 $db_pass='890123asd';
+echo '123';
 try{
     $pdo=new PDO($dsn,$db_user,$db_pass);
 	 foreach ($dbh->query('SELECT * from mytable') as $row) {
