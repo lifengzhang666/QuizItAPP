@@ -107,13 +107,19 @@ function Login(){
     $res=$pdo->query($sql);
 
     if($res->fetchColumn()){
-        //存在此user
-        echo json_encode('登陆成功');
+        //存在此user,成功返回 loginresult=1,失败 loginresult=0
+//        $data = array('loginresult' => 1);
+//        echo json_encode($data);
+//        echo json_encode('登陆成功');
+        echo json_encode(1);
         return ;
     }else{
-        //不存在此user，可以创建用户
-            echo json_encode('登陆失败');
-            return;
+        //用户名或密码错误
+//        $data = array('loginresult' => 0);
+//        echo json_encode('登陆失败');
+//        echo json_encode($data);
+        echo json_encode(0);
+        return;
         }
 }
 
