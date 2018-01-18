@@ -149,22 +149,30 @@
                 return;
             }
             var email = document.getElementById("inputEmail");
-            if(email.value === "") {
-                alert("密码不能为空！");
+            var myreg =/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+            if(!myreg.test(email.value))
+            {
+                alert("请输入有效的Email地址！");
                 return;
             }
+            if(email.value === "") {
+                alert("邮箱不能为空！");
+                return;
+            }
+
             var pwd = document.getElementById("inputPassword");
             if(pwd.value === "") {
                 alert("密码不能为空！");
                 return;
             }
             var repwd = document.getElementById("RePassword");
-            if(repwd.value === "") {
+            if(repwd.value !== pwd.value) {
                 alert("两次密码不同！");
                 return;
             }
             console.log("开始ajax");
             //TODO：向数据库写入数据
+			//data的第一个数据固定为act,在DataManager.php根据act选择要执行的函数
 			$.ajax({
                 url:'DataManager.php',
 				type:'POST',

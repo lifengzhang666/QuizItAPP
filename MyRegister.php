@@ -20,7 +20,7 @@ echo '123';
 //query_sql();
 
 function query_sql(){
-    $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
+$arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
     echo json_encode($arr);
 }
 //$json = json_encode(array(

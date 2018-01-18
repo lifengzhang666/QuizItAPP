@@ -26,6 +26,9 @@ switch ($action){
     case 'register':
         Register();
         break;
+    case 'login':
+        Login();
+        break;
 }
 
 //注册
@@ -45,6 +48,7 @@ function Register(){
         return;
     }
 
+
     //获取参数
     $username=$_REQUEST["username"];
     $email=$_REQUEST["email"];
@@ -62,17 +66,59 @@ function Register(){
         return ;
     }else{
         //不存在此user，可以创建用户
-        $insertsql="INSERT INTO `mytable` (`username`, `password`, `email`) VALUES ('$username', '$pwd', '$email')";
+        $insertsql="INSERT INTO `mytable` (`username`,`password`, `email`) VALUES ('$username', '$pwd', '$email')";
         //exec执行SQL语句增删改查，返回影响行数
         $execres=$pdo->exec($insertsql);
         if($execres){
             echo json_encode('注册成功');
+            return;
+        }else{
+            echo json_encode('注册失败'.$execres);
+            return;
         }
+
 
 
     }
 
 }
+
+function Login(){
+
+    //判断传入参数是否正确
+    if(!isset($_REQUEST["username"]) || empty($_REQUEST["username"])){
+        echo json_encode('没有传入username或为空');
+        return;
+    }
+    if(!isset($_REQUEST["password"]) || empty($_REQUEST["password"])){
+        echo json_encode('没有传入password或为空');
+        return;
+    }
+
+
+    //获取参数
+    $username=$_REQUEST["username"];
+    $pwd=$_REQUEST["password"];
+
+    //数据库相关
+    $pdo =ConnectMysql();
+    $sql="select * from mytable WHERE username='$username' AND password='$pwd'";
+    //query查询SQL语句，返回PDOstatement对象
+    $res=$pdo->query($sql);
+
+    if($res->fetchColumn()){
+        //存在此user
+        echo json_encode('登陆成功');
+        return ;
+    }else{
+        //不存在此user，可以创建用户
+            echo json_encode('登陆失败');
+            return;
+        }
+}
+
+
+
 
 //数据库连接
 function ConnectMysql(){
@@ -83,7 +129,8 @@ function ConnectMysql(){
         $mypdo=new PDO($dsn,$db_user,$db_pass);
         return $mypdo;
     }catch(PDOException $e){
-        echo '数据库连接失败'.$e->getMessage();
+        echo json_encode('数据库连接失败'.$e->getMessage());
+
     }
 
 }

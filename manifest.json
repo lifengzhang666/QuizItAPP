@@ -219,7 +219,10 @@
 					"js/jquery-1.11.0.min.js",
 					"css/normalize.css",
 					"css/comment.css",
-					"js/comment.js"
+					"js/comment.js",
+					"jquery.min.js",
+					"css/register.css",
+					"DataManager.php"
 				],
 				"refer": [],
 				"priority": 0
@@ -227,8 +230,7 @@
 		},
 		"idle": {
 			"resources": [
-				"indexCon.php",
-				"jquery.min.js"
+				"indexCon.php"
 			]
 		}
 	}
