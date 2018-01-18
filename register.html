@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/register.css">
-	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
 
 
 	<style type="text/css">
@@ -174,7 +174,7 @@
             //TODO：向数据库写入数据
 			//data的第一个数据固定为act,在DataManager.php根据act选择要执行的函数
 			$.ajax({
-                url:'DataManager.php',
+                url:'Manager/DataManager.php',
 				type:'POST',
 				dataType:'json',
                 data:{act:'register',username:user.value,email:email.value,password:pwd.value},
