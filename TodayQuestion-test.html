@@ -47,20 +47,20 @@
 </script>
 	<form class="question-content" style="border:3px;text-align: center;margin-top: 70px;font-size:20px;line-height: 50px;">
 		<div style="text-align:left;margin-left: 30px;margin-bottom: 10px;font-weight: bold">
-		    第<span class="num-timu" style="margin-left: 10px;margin-right: 10px"></span>题：<span class="tigan" id="tigan"></span>
+		    第<span class="Numq" id="Numq" style="margin-left: 10px;margin-right: 10px"></span>题：<span class="quescont" id="quescont"></span>
 		</div>
 		<div>
 			<label style="text-align:left;margin-left: 30px;display: block">
-				<input type="radio"  id="A-radio" name="item" value="A">A:<span class="A-item"></span>
+				<input type="radio"  id="A-radio" name="item" value="A">A:<span class="Acont" id="Acont"></span>
 			</label>
 			<label style="text-align:left;margin-left: 30px;display: block">
-				<input type="radio" id="B-radio"  name="item" value="B">B:<span class="B-item"></span>
+				<input type="radio" id="B-radio"  name="item" value="B">B:<span class="Bcont" id="Bcont"></span>
 			</label>
 			<label style="text-align:left;margin-left: 30px;display: block">
-				<input type="radio" id="C-radio" name="item" value="C">C:<span class="C-content"></span>
+				<input type="radio" id="C-radio" name="item" value="C">C:<span class="Ccont" id="Ccont"></span>
 			</label>
 			<label style="text-align:left;margin-left: 30px;display: block">
-				<input type="radio" id="D-radio" name="item" value="D">D:<span class="D-content" ></span>
+				<input type="radio" id="D-radio" name="item" value="D">D:<span class="Dcont" id="Dcont" ></span>
 			</label>
 		</div>
 		<input class="btn" type="button" value="提交" onclick="SubmitAnswer()" style="background-color: darksalmon;width: 100px;font-size: medium;font-weight: bold"/>
@@ -175,8 +175,23 @@
                     console.log(result.question);
                     console.log(result.itemA);
 
-                    var questionEle=document.getElementById('tigan');
+                    var questionNum=document.getElementById('Numq');
+                    questionNum.innerText=result.questionID;
+
+                    var questionEle=document.getElementById('quescont');
                     questionEle.innerText=result.question;
+
+                    var ACONT=document.getElementById('Acont');
+                    ACONT.innerText=result.itemA;
+
+                    var BCONT=document.getElementById('Bcont');
+                    BCONT.innerText=result.itemB;
+
+                    var CCONT=document.getElementById('Ccont');
+                    CCONT.innerText=result.itemC;
+
+                    var DCONT=document.getElementById('Dcont');
+                    DCONT.innerText=result.itemD;
 
 				}else{
                     console.log("没有题目");

@@ -224,6 +224,7 @@ function ShowQuestion(){
     //如果有数据
     if($resultdata){
         //中括号里是数据库列名
+        $questionID=$resultdata['ID'];
         $question=$resultdata['quescontent'];
         $selectA=$resultdata['Aitem'];
         $selectB=$resultdata['Bitem'];
@@ -231,7 +232,7 @@ function ShowQuestion(){
         $selectD=$resultdata['Ditem'];
         //创建数组
         //成功时data为1
-        $data = array('data'=> 1,'question'=>$question,'itemA' => $selectA,'itemB' => $selectB,'itemC' => $selectC,'itemD' => $selectD,);
+        $data = array('data'=> 1,'questionID'=>$questionID,'question'=>$question,'itemA' => $selectA,'itemB' => $selectB,'itemC' => $selectC,'itemD' => $selectD,);
         //变成json格式，返回
         echo json_encode($data);
         return;
