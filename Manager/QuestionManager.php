@@ -32,6 +32,13 @@ switch ($action){
     case 'SetAnswer':
         SubmitAnswer();
         break;
+    case 'SetQuestion':
+        SubmitQuestion();
+        break;
+    case 'showquestion':
+        ShowQuestion();
+    break;
+
 }
 
 //注册
@@ -69,9 +76,6 @@ function Register(){
         return ;
     }else{
         //不存在此user，可以创建用户
-        //插入数据模仿这个
-        //INSERT INTO `qctable` (`quescontent`, `Aitem`, `Bitem`, `Citem`, `Ditem`) VALUES ('插入题目', 'a', 'b', 'c', 'd');
-
         $insertsql="INSERT INTO `mytable` (`username`,`password`, `email`) VALUES ('$username', '$pwd', '$email')";
         //exec执行SQL语句增删改查，返回影响行数
         $execres=$pdo->exec($insertsql);
@@ -153,6 +157,89 @@ function SubmitAnswer()
             echo json_encode('提交失败' . $execres);
             return;
         }
+}
+
+function SubmitQuestion(){
+
+    //判断传入参数是否正确
+    if(!isset($_REQUEST["quescontent"]) || empty($_REQUEST["quescontent"])){
+        echo json_encode('没有传入quescontent或为空');
+        return;
+    }
+    if(!isset($_REQUEST["Aitem"]) || empty($_REQUEST["Aitem"])){
+        echo json_encode('没有传入Aitem或为空');
+        return;
+    }
+    if(!isset($_REQUEST["Bitem"]) || empty($_REQUEST["Bitem"])){
+        echo json_encode('没有传入Bitem或为空');
+        return;
+    }
+    if(!isset($_REQUEST["Citem"]) || empty($_REQUEST["Citem"])){
+        echo json_encode('没有传入Citem或为空');
+        return;
+    }
+    if(!isset($_REQUEST["Ditem"]) || empty($_REQUEST["Ditem"])){
+        echo json_encode('没有传入Ditem或为空');
+        return;
+    }
+
+
+    //获取参数
+    $quescontent=$_REQUEST["quescontent"];
+    $a=$_REQUEST["Aitem"];
+    $b=$_REQUEST["Bitem"];
+    $c=$_REQUEST["Citem"];
+    $d=$_REQUEST["Ditem"];
+    $true=$_REQUEST["Answer"];
+
+    //数据库相关
+    $pdo =ConnectMysql();
+    //创建题目
+        $insertsql="INSERT INTO `qctable` (`quescontent`,`Aitem`, `Bitem`, `Citem`, `Ditem`, `TrueAns`) VALUES ('$quescontent', '$a', '$b', '$c', '$d', '$true')";
+        //exec执行SQL语句增删改查，返回影响行数
+        $execres=$pdo->exec($insertsql);
+        if($execres){
+            echo json_encode(1);
+            return;
+        }else{
+            echo json_encode('提交失败'.$execres);
+            return;
+        }
+
+
+
+
+
+}
+
+function ShowQuestion(){
+
+    //数据库相关
+    $pdo =ConnectMysql();
+    $sql="select * from qctable WHERE istoday='1'";
+    //query查询SQL语句，返回PDOstatement对象
+    $res=$pdo->query($sql);
+    //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
+    $resultdata=$res->fetch(PDO::FETCH_ASSOC);
+    //如果有数据
+    if($resultdata){
+        //中括号里是数据库列名
+        $question=$resultdata['quescontent'];
+        $selectA=$resultdata['Aitem'];
+        $selectB=$resultdata['Bitem'];
+        $selectC=$resultdata['Citem'];
+        $selectD=$resultdata['Ditem'];
+        //创建数组
+        //成功时data为1
+        $data = array('data'=> 1,'question'=>$question,'itemA' => $selectA,'itemB' => $selectB,'itemC' => $selectC,'itemD' => $selectD,);
+        //变成json格式，返回
+        echo json_encode($data);
+        return;
+    }else{
+        $data = array('data'=> 0);
+        echo json_encode($data);
+        return;
+    }
 }
 //数据库连接
 function ConnectMysql(){
