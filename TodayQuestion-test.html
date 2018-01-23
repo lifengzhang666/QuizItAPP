@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta content="yes" name="apple-mobile-web-app-capable">  
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0;">
+	<title>今日题</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/comment.css">
+	<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/comment.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src='js/velocity.min.js'></script>
+    <script src='js/sideToggleExtended.js'></script>
+</head>
+<body>
+<div class="quiz">
+	<div class="daohangtiao"style="position:absolute;z-index: 0;">
+	   <nav>
+       <a href="#" style="color: #3D3D3D;font-size: 16px;">
+	   <span class="fa fa-arrow-left"></span>
+	     返回
+       </a>
+       <div id="sideMenu">
+	   <span class="fa fa-navicon" id="sideMenuClosed"></span>
+       </div>
+       </nav>
+    </div>
+
+<div id="sideMenuContainer">
+  <a href="#" title="今日题" style="color: #FFFFFF;"><span class="fa fa-pencil-square-o"></span></a>
+  <a href="#" title="历史题" style="color: #FFFFFF;"><span class="fa fa-list-alt"></span></a>
+</div>	
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	  $('#sideMenu').sideToggle({
+		moving: '#sideMenuContainer',
+		direction: 'right'
+	  });
+
+	});
+</script>
+	<form class="question-content" style="border:3px;text-align: center;margin-top: 70px;font-size:20px;line-height: 50px;">
+		<div style="text-align:left;margin-left: 30px;margin-bottom: 10px;font-weight: bold">
+		    第<span class="Numq" id="Numq" style="margin-left: 10px;margin-right: 10px"></span>题：<span class="quescont" id="quescont"></span>
+		</div>
+		<div>
+			<label style="text-align:left;margin-left: 30px;display: block">
+				<input type="radio"  id="A-radio" name="item" value="A">A:<span class="Acont" id="Acont"></span>
+			</label>
+			<label style="text-align:left;margin-left: 30px;display: block">
+				<input type="radio" id="B-radio"  name="item" value="B">B:<span class="Bcont" id="Bcont"></span>
+			</label>
+			<label style="text-align:left;margin-left: 30px;display: block">
+				<input type="radio" id="C-radio" name="item" value="C">C:<span class="Ccont" id="Ccont"></span>
+			</label>
+			<label style="text-align:left;margin-left: 30px;display: block">
+				<input type="radio" id="D-radio" name="item" value="D">D:<span class="Dcont" id="Dcont" ></span>
+			</label>
+		</div>
+		<input class="btn" type="button" value="提交" onclick="SubmitAnswer()" style="background-color: darksalmon;width: 100px;font-size: medium;font-weight: bold"/>
+	</form>
+	<div class="demo" style="width:100%;padding: 20px 0;margin-top: 50px;position:absolute;z-index: -1;">		
+		<div class="discuss" >讨论区</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					
+					<div id="list">
+						<div class="box clearfix">							
+							<div class="content">
+								<div class="main">
+									<p class="txt">
+										<span class="user">Andy：</span>轻轻的我走了，正如我轻轻的来；我轻轻的招手，作别西天的云彩。轻轻的我走了，正如我轻轻的来；我轻轻的招手，作别西天的云彩。
+									</p>
+						
+								</div>
+								<div class="info clearfix">
+									<span class="time">02-14 23:01</span>
+									<a class="praise" href="javascript:;" >赞</a>
+									<span class="fa fa-thumbs-o-up" ></span>
+								</div>
+								<div class="praises-total" total="4" style="display: block;">4个人觉得很赞
+								</div>
+								<div class="comment-list">
+									<div class="comment-box clearfix" user="self">
+										<div class="comment-content">
+											    <p class="comment-text"><span class="user">我：</span>写的太好了。</p>
+											    <p class="comment-time">
+												    2014-02-19 14:36
+												<a href="javascript:;" class="comment-praise" total="0"  style="display: inline-block">赞</a>
+												<a href="javascript:;" class="comment-operate">删除</a>
+											    </p>
+										        <div class="praises-total" total="4" style="display: block;">4个人觉得很赞
+								                </div>
+											    
+										</div>
+								    </div>
+								    <div class="comment-box clearfix" user="other">
+                                        <div class="comment-content">
+                                            <p class="comment-text"><span class="user">老鹰：</span>我也觉得不错。</p>
+                                            <p class="comment-time">
+                                                2014-02-19 14:36
+                                                <a href="javascript:;" class="comment-praise" total="0" my="0">赞</a>
+                                                <a href="javascript:;" class="comment-operate">回复</a>
+                                            </p>
+                                            <div class="praises-total" total="4" style="display: block;">4个人觉得很赞
+								            </div>
+                                        </div>
+                                    </div>
+								</div>	
+							</div>
+								<div class="text-box">
+									<textarea class="comment" autocomplete="off">我要提问…</textarea>
+									<button class="btn ">发送</button>
+									<span class="word"><span class="length">0</span>/140</span>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    function SubmitAnswer() {
+        //TODO:获取用户选择答案
+        //此处 user 是 id 为 inputUsername 的 html 元素
+        var item = document.getElementsByName("item");
+        for(i=0;i<item.length;i++){
+            if(item[i].checked){
+                var answer=item[i].value;
+                alert("你选中了:"+answer);
+                break;
+            }
+        }
+
+
+    console.log("开始ajax");
+    //TODO：向数据库写入数据
+    //data的第一个数据固定为act,在DataManager.php根据act选择要执行的函数
+    $.ajax({
+        url:'Manager/DataManager.php',
+        type:'POST',
+        dataType:'json',
+        data:{act:'SetAnswer',answer:answer},
+        success:function (result) {
+            console.log("返回:"+result);
+            if(result===1) {
+                console.log("提交成功");
+            }
+        },
+        error:function (result) {
+            console.log(result);
+        }
+    });
+    console.log("结束ajax");
+    }
+
+    function ShowQuestion(){
+        //取数据显示在页面
+        $.ajax({
+            url:'Manager/QuestionManager.php',
+            type:'POST',
+            dataType:'json',
+            data:{act:'showquestion'},
+            success:function (result) {
+                if(result.data==1){
+                    //取到数据放到网页上
+                    console.log(result.question);
+                    console.log(result.itemA);
+
+                    var questionNum=document.getElementById('Numq');
+                    questionNum.innerText=result.questionID;
+
+                    var questionEle=document.getElementById('quescont');
+                    questionEle.innerText=result.question;
+
+                    var ACONT=document.getElementById('Acont');
+                    ACONT.innerText=result.itemA;
+
+                    var BCONT=document.getElementById('Bcont');
+                    BCONT.innerText=result.itemB;
+
+                    var CCONT=document.getElementById('Ccont');
+                    CCONT.innerText=result.itemC;
+
+                    var DCONT=document.getElementById('Dcont');
+                    DCONT.innerText=result.itemD;
+
+				}else{
+                    console.log("没有题目");
+				}
+
+                },
+
+            error:function (result) {
+                console.log(result);
+            }
+        });
+
+	}
+
+    //执行一次函数
+    ShowQuestion();
+
+</script>
+</body>
+</html>

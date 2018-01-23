@@ -179,7 +179,11 @@
 				dataType:'json',
                 data:{act:'register',username:user.value,email:email.value,password:pwd.value},
 				success:function (result) {
-                    console.log(result);
+                    console.log("返回:"+result);
+                    if(result===1) {
+                        console.log("注册成功");
+                       window.location.href = 'login.html';
+                    }
                 },
 				error:function (result) {
                     console.log(result);

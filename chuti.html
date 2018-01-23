@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师出题</title>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+
+</head>
+<body>
+//此处出题，将题目传到数据库，前端再从数据库读取题目
+<div class="question" style="padding: 20px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form class="form-horizontal">
+
+                        <div class="form-group" style="margin-bottom: 10px ">
+                        题目：<input type="text" id="QuestionContent"  style="width: 500px;height: 100px" placeholder="请输入题目"
+                               onfocus="if(this.placeholder=='请输入题目') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入题目'">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 10px">
+
+                        A:<input type="text" id="Acontent" style="width: 500px;height: 30px" placeholder="请输入A选项的内容"
+                               onfocus="if(this.placeholder=='请输入A选项的内容') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入A选项的内容'">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 10px ">
+
+                         B:<input type="text" id="Bcontent" style="width: 500px;height: 30px" placeholder="请输入B选项的内容"
+                             onfocus="if(this.placeholder=='请输入B选项的内容') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入B选项的内容'">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 10px ">
+
+                        C:<input type="text" id="Ccontent"style="width: 500px;height: 30px"  placeholder="请输入C选项的内容"
+                                 onfocus="if(this.placeholder=='请输入C选项的内容') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入C选项的内容'">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 10px ">
+
+                        D:<input type="text" id="Dcontent" style="width: 500px;height: 30px" placeholder="请输入D选项的内容"
+                                 onfocus="if(this.placeholder=='请输入D选项的内容') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入D选项的内容'">
+
+                        </div>
+                        <div>
+                             请输入正确选项：<input type="text" id="answer" style="width: 100px;height: 30px">
+                        </div>
+                    <input class="btn" type="button" value="提交" onclick="SubmitQuestion()" style="background-color: darksalmon;width: 100px;font-size: medium;font-weight: bold"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function SubmitQuestion() {
+        //TODO:获取题干和选项
+        //此处 questioncontent是 id 为 question-content 的 html 元素
+            var quescontent = document.getElementById("QuestionContent");
+        if(quescontent.value === "") {
+            alert("题干为空！");
+            return;
+        }
+        var aitem = document.getElementById("Acontent");
+        if(aitem.value === "") {
+            alert("A选项不能为空！");
+            return;
+        }
+        var bitem = document.getElementById("Bcontent");
+        if(aitem.value === "") {
+            alert("B选项不能为空！");
+            return;
+        }
+        var citem = document.getElementById("Ccontent");
+        if(aitem.value === "") {
+            alert("C选项不能为空！");
+            return;
+        }
+        var ditem = document.getElementById("Dcontent");
+        if(aitem.value === "") {
+            alert("D选项不能为空！");
+            return;
+        }
+        var right = document.getElementById("answer");
+        if(right.value === "") {
+            alert("正确答案不能为空！");
+            return;
+        }
+
+
+        console.log("开始ajax");
+        //TODO：向数据库写入数据
+        //data的第一个数据固定为act,在DataManager.php根据act选择要执行的函数
+        $.ajax({
+            url:'Manager/QuestionManager.php',
+            type:'POST',
+            dataType:'json',
+            data:{act:'SetQuestion',quescontent:quescontent.value,Aitem:aitem.value,Bitem:bitem.value,Citem:citem.value,Ditem:ditem.value,Answer:right.value},
+            success:function (result) {
+                 console.log("返回:"+result);
+                if(result===1) {
+                    console.log("出题成功");
+                }
+            },
+            error:function (result) {
+                console.log(result);
+            }
+        });
+        console.log("结束ajax");
+    }
+
+</script>
+</body>
+</html>
