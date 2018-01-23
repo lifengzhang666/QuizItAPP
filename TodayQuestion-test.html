@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	<meta content="yes" name="apple-mobile-web-app-capable">  
-	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0;">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0">
 	<title>今日题</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -62,10 +62,23 @@
 			<label style="text-align:left;margin-left: 30px;display: block">
 				<input type="radio" id="D-radio" name="item" value="D">D:<span class="Dcont" id="Dcont" ></span>
 			</label>
+			<div id="Ransdiv" style="display: none">
+			正确答案：
+			<span id="TrueItem" ></span>
+			</div>
 		</div>
-		<input class="btn" type="button" value="提交" onclick="SubmitAnswer()" style="background-color: darksalmon;width: 100px;font-size: medium;font-weight: bold"/>
+		<div  class="anscheck" id="check" style="display: none"></div>
+
+		<label>
+		<input class="btn" type="button" value="提交答案" onclick="SubmitAnswer()" style="background-color: darksalmon;width: 100px;font-size: medium;font-weight: bold"/>
+		</label>
+		<label>
+			<input type="button" class="btn" id="TrueAnswer" value="查看答案" onclick="ShowAnswer()"
+				   style="background-color:cadetblue;width: 100px;font-size: medium;font-weight: bold;">
+		</label>
+
 	</form>
-	<div class="demo" style="width:100%;padding: 20px 0;margin-top: 50px;position:absolute;z-index: -1;">		
+	<div class="demo" style="width:100%;padding: 20px 0;margin-top: 50px;position:absolute;z-index: -1;">
 		<div class="discuss" >讨论区</div>
 		<div class="container">
 			<div class="row">
@@ -128,18 +141,39 @@
 	</div>
 </div>
 <script>
+	//TODO:显示/隐藏正确答案
+    function ShowAnswer() {
+        var ta=document.getElementById('Ransdiv');
+        var butcont=document.getElementById('TrueAnswer');
+           if(butcont.value=="查看答案"){
+               butcont.value="隐藏答案";
+               ta.style.display="block";
+		   }else{
+            butcont.value="查看答案";
+            ta.style.display="none";
+        }
+    }
+
     function SubmitAnswer() {
         //TODO:获取用户选择答案
         //此处 user 是 id 为 inputUsername 的 html 元素
         var item = document.getElementsByName("item");
-        for(i=0;i<item.length;i++){
-            if(item[i].checked){
-                var answer=item[i].value;
-                alert("你选中了:"+answer);
-                break;
+        var Ranswer = document.getElementById("TrueItem").innerHTML;
+        for (i = 0; i < item.length; i++) {
+            if (item[i].checked) {
+                var answer = item[i].value;
+                var checkans=document.getElementById("check");
+                   if (answer ===Ranswer ) {
+                    checkans.innerHTML="回答正确";
+                    checkans.style.display="block";
+                    break;
+                      } else {
+                       checkans.innerHTML="回答错误";
+                       checkans.style.display="block";
+                    break;
+                }
             }
         }
-
 
     console.log("开始ajax");
     //TODO：向数据库写入数据
@@ -192,6 +226,9 @@
 
                     var DCONT=document.getElementById('Dcont');
                     DCONT.innerText=result.itemD;
+
+                    var Titem=document.getElementById('TrueItem');
+                    Titem.innerText=result.showanswer;
 
 				}else{
                     console.log("没有题目");

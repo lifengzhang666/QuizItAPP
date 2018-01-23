@@ -182,6 +182,10 @@ function SubmitQuestion(){
         echo json_encode('没有传入Ditem或为空');
         return;
     }
+    if(!isset($_REQUEST["Settime"]) || empty($_REQUEST["Settime"])){
+        echo json_encode('没有传入Settime或为空');
+        return;
+    }
 
 
     //获取参数
@@ -191,11 +195,12 @@ function SubmitQuestion(){
     $c=$_REQUEST["Citem"];
     $d=$_REQUEST["Ditem"];
     $true=$_REQUEST["Answer"];
+    $set=$_REQUEST["Settime"];
 
     //数据库相关
     $pdo =ConnectMysql();
     //创建题目
-        $insertsql="INSERT INTO `qctable` (`quescontent`,`Aitem`, `Bitem`, `Citem`, `Ditem`, `TrueAns`) VALUES ('$quescontent', '$a', '$b', '$c', '$d', '$true')";
+        $insertsql="INSERT INTO `qctable` (`quescontent`,`Aitem`, `Bitem`, `Citem`, `Ditem`, `TrueAns`,`SetTime`) VALUES ('$quescontent', '$a', '$b', '$c', '$d', '$true','$set')";
         //exec执行SQL语句增删改查，返回影响行数
         $execres=$pdo->exec($insertsql);
         if($execres){
@@ -216,7 +221,8 @@ function ShowQuestion(){
 
     //数据库相关
     $pdo =ConnectMysql();
-    $sql="select * from qctable WHERE istoday='1'";
+    $time=date("Ymd",time());
+    $sql="select * from qctable WHERE SetTime='$time'";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
     //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
@@ -230,9 +236,12 @@ function ShowQuestion(){
         $selectB=$resultdata['Bitem'];
         $selectC=$resultdata['Citem'];
         $selectD=$resultdata['Ditem'];
+        $Settime=$resultdata['SetTime'];
+        $Showans=$resultdata['TrueAns'];
         //创建数组
         //成功时data为1
-        $data = array('data'=> 1,'questionID'=>$questionID,'question'=>$question,'itemA' => $selectA,'itemB' => $selectB,'itemC' => $selectC,'itemD' => $selectD,);
+        $data = array('data'=> 1,'questionID'=>$questionID,'question'=>$question,'itemA' => $selectA,
+            'itemB' => $selectB,'itemC' => $selectC,'itemD' => $selectD,'Settime'=>$Settime,'showanswer'=>$Showans);
         //变成json格式，返回
         echo json_encode($data);
         return;

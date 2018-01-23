@@ -2,6 +2,9 @@
  * Created by an.han on 14-2-20.
  */
 
+
+
+
 window.onload = function () {
     var list = document.getElementById('list');
     var boxs = list.children;

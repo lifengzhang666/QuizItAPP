@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group" style="margin-bottom: 10px ">
 
-                        C:<input type="text" id="Ccontent"style="width: 500px;height: 30px"  placeholder="请输入C选项的内容"
+                        C:<input type="text" id="Ccontent" style="width: 500px;height: 30px"  placeholder="请输入C选项的内容"
                                  onfocus="if(this.placeholder=='请输入C选项的内容') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入C选项的内容'">
                         </div>
                         <div class="form-group" style="margin-bottom: 10px ">
@@ -44,9 +44,23 @@
                                  onfocus="if(this.placeholder=='请输入D选项的内容') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入D选项的内容'">
 
                         </div>
-                        <div>
-                             请输入正确选项：<input type="text" id="answer" style="width: 100px;height: 30px">
+                        <div style="margin-bottom: 10px">
+                             <label>请输入正确答案：<input type="text" id="answer" style="width: 100px;height: 30px"></label>
                         </div>
+                    <div style="margin-bottom: 10px">
+                        <label>
+                        预计做题时间：
+                        <input type="text" id="settime1" style="width: 200px" > 格式如：20180101
+                        </label>
+                    </div>
+                    <div style="margin-bottom: 30px">
+                    <label>
+                        是否作为今日题？<input type="radio" id="yes" value="yes" name="judge">是
+                    </label>
+                    <label>
+                        <input type="radio" id="no" value="no" name="judge">否
+                    </label>
+                    </div>
                     <input class="btn" type="button" value="提交" onclick="SubmitQuestion()" style="background-color: darksalmon;width: 100px;font-size: medium;font-weight: bold"/>
                 </form>
             </div>
@@ -82,9 +96,17 @@
             alert("D选项不能为空！");
             return;
         }
-        var right = document.getElementById("answer");
-        if(right.value === "") {
-            alert("正确答案不能为空！");
+        var rightanswer = document.getElementById("answer");
+        if(answer.value === "") {
+            alert("答案不能为空！");
+            return;
+        }
+
+
+        var settime=document.getElementById("settime1");
+
+        if(settime.value === "") {
+            alert("日期不能为空！");
             return;
         }
 
@@ -96,7 +118,8 @@
             url:'Manager/QuestionManager.php',
             type:'POST',
             dataType:'json',
-            data:{act:'SetQuestion',quescontent:quescontent.value,Aitem:aitem.value,Bitem:bitem.value,Citem:citem.value,Ditem:ditem.value,Answer:right.value},
+            data:{act:'SetQuestion',quescontent:quescontent.value,Aitem:aitem.value,
+                Bitem:bitem.value,Citem:citem.value,Ditem:ditem.value,Answer:rightanswer.value, Settime:settime.value},
             success:function (result) {
                  console.log("返回:"+result);
                 if(result===1) {
