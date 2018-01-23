@@ -29,6 +29,9 @@ switch ($action){
     case 'login':
         Login();
         break;
+    case 'confirm':
+        Confirm();
+        break;
 }
 
 //注册
@@ -105,25 +108,50 @@ function Login(){
     $sql="select * from mytable WHERE username='$username' AND password='$pwd'";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
-
-    if($res->fetchColumn()){
-        //存在此user,成功返回 loginresult=1,失败 loginresult=0
-//        $data = array('loginresult' => 1);
-//        echo json_encode($data);
+    //返回第一行数组，没有就返回false
+    $resultdata=$res->fetch(PDO::FETCH_ASSOC);
+    if($resultdata){
+        //有数据则说明存在此用户，进行登录成功的操作，写入session
+//        $path = 'tmp/';
+//        session_save_path($path);
+        session_start();
+        $sessid=session_id();
+        $_SESSION['myuname']=$username;
+        $_SESSION['mysessid']=$sessid;
+        $data = array('data' => 1,'sessid'=>$sessid);
+//        $data = array('data' => 1,'userid'=>$resultdata['userid']);
+        echo json_encode($data);
+        //存在此user,成功返回1
 //        echo json_encode('登陆成功');
-        echo json_encode(1);
+//        echo json_encode(1);
         return ;
     }else{
         //用户名或密码错误
-//        $data = array('loginresult' => 0);
-//        echo json_encode('登陆失败');
-//        echo json_encode($data);
         echo json_encode(0);
         return;
         }
 }
 
+function Confirm(){
 
+    //判断传入参数是否正确
+    if(!isset($_REQUEST["sessid"]) || empty($_REQUEST["sessid"])){
+        echo json_encode('没有传入 sessid 或为空');
+        return;
+    }
+    $sessId=$_REQUEST["sessid"];
+    session_id($sessId);
+    session_start();
+    if (isset($_SESSION['mysessid']) && $_SESSION['mysessid']==$sessId){
+        $confirmsucess=1;
+        echo json_encode(1);
+        return;
+    }else{
+        echo json_encode(0);
+        return;
+    }
+
+}
 
 
 //数据库连接
