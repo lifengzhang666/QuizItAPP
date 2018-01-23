@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script>
+        console.log("sessid:"+$.cookie('sessid'));
+        console.log("username:"+$.cookie('username'));
+        //从cookie获取sessionID
+        var sessID=$.cookie('sessid');
+        //判断cookie中是否存有sessid,或者是不是空
+        // 没有或为空说明没有登录跳转去登录
+        //存在的话需要发到后台验证是不是真的存在此sessid,存在说明用户已登录
+        if(!sessID||sessID===null){
+            window.location.href='login.html';
+        }else{
+            $.ajax({
+                url: 'Manager/DataManager.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {act: 'confirm', sessid: sessID},
+                success: function (result) {
+                    //TODO：判断此userid是否已经登录
+                    console.log("是否有session:"+result);
+                    if(result===1){
+                        //已登录
+
+                    }else{
+                        //未登录
+                        window.location.href='login.html';
+                    }
+                },
+                error: function (result) {
+                    console.log("json返回错误");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<p>index</p>
+</body>
+</html>
