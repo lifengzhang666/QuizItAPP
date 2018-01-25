@@ -272,16 +272,18 @@ function SubmitComment(){
     }
 
     //获取参数
+
     $CC=$_REQUEST["CommentContent"];
     $QID=$_REQUEST["QuestionID"];
     $UserName=$_REQUEST["SessName"];
     $ObjUser=$_REQUEST["objName"];
+    $time=date("Y-m-d-h-s",time());
 
     //数据库相关
     $pdo =ConnectMysql();
     //创建题目
     //$insertsql="INSERT INTO `commenttable` (`CommentContent`,`QuestionID`,`UserName`) VALUES ('$CC','$QID','$SessName')";
-    $insertsql="INSERT INTO `commenttable` (`CommentContent`,`QuestionID`,`UserName`,`ObjUserName`) VALUES ('$CC','$QID','$UserName','$ObjUser')";
+    $insertsql="INSERT INTO `commenttable` (`CommentContent`,`QuestionID`,`UserName`,`ObjUserName`,`CommentTime`) VALUES ('$CC','$QID','$UserName','$ObjUser','$time')";
     //exec执行SQL语句增删改查，返回影响行数
     $execres=$pdo->exec($insertsql);
     if($execres){
@@ -304,24 +306,38 @@ function ShowComment(){
     $sql="select * from commenttable WHERE QuestionID='100'";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
-    //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
-    $resultdata=$res->fetch(PDO::FETCH_ASSOC);
-    //如果有数据
-    if($resultdata){
-        //中括号里是数据库列名
-        $username=$resultdata['UserName'];
-        $comment=$resultdata['CommentContent'];
-        //创建数组
-        //成功时data为1
-        $data = array('data'=> 1,'username'=>$username,'comment'=>$comment);
-        //变成json格式，返回
-        echo json_encode($data);
-        return;
-    }else{
-        $data = array('data'=> 0);
+    //取返回结果的下一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
+    //$resultdata=$res->fetch(PDO::FETCH_ASSOC);
+
+    //fetchAll可以获取返回结果的剩余全部数据放在数组里
+    $resultalldata=$res->fetchAll(PDO::FETCH_ASSOC);
+
+    if($resultalldata){
+        $data = array('data'=> 1,'allcomment'=>$resultalldata);
         echo json_encode($data);
         return;
     }
+    else{
+        $data = array('data'=> 0);
+        json_encode($data);
+        return;
+        }
+    //如果有数据
+//    if($resultdata){
+//        //中括号里是数据库列名
+//        $username=$resultdata['UserName'];
+//        $comment=$resultdata['CommentContent'];
+//        //创建数组
+//        //成功时data为1
+//        $data = array('data'=> 1,'username'=>$username,'comment'=>$comment);
+//        //变成json格式，返回
+//        echo json_encode($data);
+//        return;
+//    }else{
+//        $data = array('data'=> 0);
+//        echo json_encode($data);
+//        return;
+//    }
 }
 //数据库连接
 function ConnectMysql(){

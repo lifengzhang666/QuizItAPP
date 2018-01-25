@@ -37,7 +37,6 @@
   <a href="#" title="今日题" style="color: #FFFFFF;"><span class="fa fa-pencil-square-o"></span></a>
   <a href="#" title="历史题" style="color: #FFFFFF;"><span class="fa fa-list-alt"></span></a>
 </div>	
-
 <script type="text/javascript">
 	$(document).ready(function(){
 	  $('#sideMenu').sideToggle({
@@ -92,6 +91,7 @@
 					<div class="box clearfix">
 						<div class="content">
 							<div class="comment-list" id="mycommentbox">
+								<div class="huifu-list" id="huifu-list"></div>
 							</div>
 							<div class="text-box">
 								<textarea class="comment" id="CommentText" autocomplete="off">我要提问…</textarea>
@@ -216,13 +216,10 @@
         var commenttext=document.getElementById("CommentText");
         var questionID=document.getElementById("Numq").innerHTML;
         var sessname=$.cookie('username');
-        var el = event.srcElement;
-        var commentBox = el.parentNode.parentNode.parentNode;
-        var objuser = commentBox.getElementsByClassName('user')[0].innerHTML;
         console.log('pinglun:'+commenttext.value);
         console.log('quesID:'+questionID);
         console.log('uname:'+sessname);
-        console.log('objuser:'+objuser);
+
         if(commenttext.value === "") {
             alert("评论内容不能为空！");
             return;
@@ -235,7 +232,7 @@
             type:'POST',
             dataType:'json',
             data:{act:'SubmitComment',CommentContent:commenttext.value,
-				QuestionID:questionID,SessName:sessname,objName:objuser},
+				QuestionID:questionID,SessName:sessname},
             success:function (result) {
                 console.log("返回:"+result);
                 if(result===1) {
@@ -258,13 +255,23 @@
             data:{act:'showcomment'},
             success:function (result) {
                 if(result.data==1){
+                    console.log(result.allcomment);
+                    var commentArray=result.allcomment;
+                    //遍历数组的每一行，一行是一条评论
+                    for(i in commentArray){
+                        //点后面是数据库的列名
+                        PutComment(commentArray[i].UserName,commentArray[i].ObjUserName,commentArray[i].CommentContent,commentArray[i].CommentTime);
+					}
+
+
+                    /*
                     //取到数据放到网页上
 					//取数据
 					var conUsername=result.username;
 					var conComment=result.comment;
 					//被评论和时间没取
                     PutComment(conUsername,'',conComment,'');
-
+					*/
                 }else{
                     console.log("没有评论");
                 }
@@ -280,30 +287,66 @@
     ShowComment();
     function PutComment(userName,objUserName,comContent,comTime){
         //要append的元素
-
         var commentList = document.getElementById('mycommentbox');
-        //var commentList = box.getElementsByClassName('comment-list')[0];
-        //评论框元素，这里评论从数据库获得
-        //var textarea = box.getElementsByClassName('comment')[0];
         //生成一个div元素
         var commentBox = document.createElement('div');
         commentBox.className = 'comment-box clearfix';
         //commentBox.setAttribute('user', 'self');
-        commentBox.innerHTML =
-            '<div class="comment-content">' +
-            //'<p class="comment-text"><span class="user" >我：</span>' + textarea.value + '</p>' +
-            '<p class="comment-text"><span class="user" id="UserName" >'+userName+'：</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
+
+		var myHTML='<div class="comment-content">'+
+        	'<p class="comment-text"><span class="user" id="UserName" >'+userName+'：</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
             '<div class="comment-time">' +comTime +
             '<div class="comment-op">'+
             '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' +
-            '<a href="javascript:" class="comment-operate" style="margin-right:10px">回复</a>' +
-            '<a href="javascript:" class="comment-operate" style="margin-right:10px">删除</a>'+
+            '<a href="javascript:" class="comment-operate" style="margin-right:10px">回复</a>';
+		//判断是不是本人评论，是本人就显示删除
+		if(userName==$.cookie('username')){
+            myHTML+='<a href="javascript:" class="comment-operate" style="margin-right:10px">删除</a>';
+		}
+        myHTML+=
             '</div>'+
             '<div class="praises-total"  style="display:block;">'+'共有<span id="praisetotal">人觉得很赞</span>'+
             '</div>'+
             '</div>'+
             '</p>' +
             '</div>';
+		commentBox.innerHTML =myHTML;
+
+		//判断这条评论是不是本人的，如果不是就不添加删除按钮
+		// if(userName==$.cookie('username')){
+         //    commentBox.innerHTML =
+         //        '<div class="comment-content">' +
+         //        //'<p class="comment-text"><span class="user" >我：</span>' + textarea.value + '</p>' +
+         //        '<p class="comment-text"><span class="user" id="UserName" >'+userName+'：</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
+         //        '<div class="comment-time">' +comTime +
+         //        '<div class="comment-op">'+
+         //        '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' +
+         //        '<a href="javascript:" class="comment-operate" style="margin-right:10px">回复</a>' +
+         //        '<a href="javascript:" class="comment-operate" style="margin-right:10px">删除</a>'+
+         //        '</div>'+
+         //        '<div class="praises-total"  style="display:block;">'+'共有<span id="praisetotal">人觉得很赞</span>'+
+         //        '</div>'+
+         //        '</div>'+
+         //        '</p>' +
+         //        '</div>';
+		// }
+		// else{
+         //    commentBox.innerHTML =
+         //        '<div class="comment-content">' +
+         //        //'<p class="comment-text"><span class="user" >我：</span>' + textarea.value + '</p>' +
+         //        '<p class="comment-text"><span class="user" id="UserName" >'+userName+'：</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
+         //        '<div class="comment-time">' +comTime +
+         //        '<div class="comment-op">'+
+         //        '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' +
+         //        '<a href="javascript:" class="comment-operate" style="margin-right:10px">回复</a>' +
+         //        //'<a href="javascript:" class="comment-operate" style="margin-right:10px">删除</a>'+
+         //        '</div>'+
+         //        '<div class="praises-total"  style="display:block;">'+'共有<span id="praisetotal">人觉得很赞</span>'+
+         //        '</div>'+
+         //        '</div>'+
+         //        '</p>' +
+         //        '</div>';
+		// }
 
         //此处是将commentBox添加到commentlist里面
         commentList.appendChild(commentBox);//appendChild() 方法向节点添加最后一个子节点。

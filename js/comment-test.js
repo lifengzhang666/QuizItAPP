@@ -58,7 +58,7 @@ window.onload = function () {
     }
 
     /**
-     * 功能：发表问题
+     * 功能：生成问题的div
      * @param box 每个分享的div容器
      * @param el 点击的元素
      */
@@ -90,6 +90,33 @@ window.onload = function () {
         textarea.onblur();
     }
 
+    /**
+    //生成一个回复的div
+    function HuiFu(box, el) {
+        var commentBox = el.parentNode.parentNode.parentNode;//评论的容器，即取到commentbox
+        var user = commentBox.getElementsByClassName('user')[0].innerHTML;
+        var huifuList = box.getElementsByClassName('huifu-list')[0];
+        var textarea = box.getElementsByClassName('comment')[0];
+        var huifuBox = document.createElement('div');//生成一个div元素
+        huifuBox.className = 'huifu-box';
+        huifuBox.innerHTML =
+            '<div class="huifu-content">' +
+            '<p class="huifu-text"><span class="user1" id="UserName1" >回复</span>' + '<span id="ObjName">：</span>'+user+textarea.value + '</p>' +
+            '<div class="huifu-time">' +formateDate(new Date()) +
+            '<div class="huifu-op">'+
+            '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' +
+            '<a href="javascript:" class="huifu-operate"  style="margin-right:10px">回复</a>' +
+            '<a href="javascript:" class="comment-operate" style="margin-right:10px">删除</a>'+
+            '</div>'+
+            '<div class="praises-total"  style="display:block;">'+'共有<span id="praisetotal">人觉得很赞</span>'+
+            '</div>'+
+            '</div>'+
+            '</p>' +
+            '</div>';
+        huifuList.appendChild(huifuBox);//appendChild() 方法向节点添加最后一个子节点。
+
+    }
+     */
 
     /**
      * 操作留言
@@ -120,18 +147,22 @@ window.onload = function () {
             var el = e.srcElement;//将触发事件的对象赋给el
             switch (el.className) {
 
+               // case'huifu-operate':
+                  //  HuiFu(el.parentNode.parentNode, el);
+                  //  break;
+
                 //赞分享
                 case 'praise':
                     praiseBox(el.parentNode.parentNode.parentNode, el);
                     break;
 
-                //回复按钮蓝
+                //发送按钮蓝
                 case 'btn':
                     question(el.parentNode.parentNode.parentNode, el);
                     //el.parentNode.parentNode.parentNode，获取box clearfix的div容器。
                     break;
 
-                //回复按钮灰
+                //发送按钮灰
                 case 'btn btn-off':
                     clearTimeout(timer);//按钮为灰时，清除定时器，即点击灰色按钮，输入框不会缩小
                     break;
