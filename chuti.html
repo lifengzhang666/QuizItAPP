@@ -19,7 +19,10 @@
             <div class="col-md-offset-3 col-md-6">
                 <form class="form-horizontal">
 
-                        <div class="form-group" style="margin-bottom: 10px ">
+                    <div style="margin-bottom: 10px ">
+                        题目编号：<input type="text" id="quesNo"  style="width: 100px;height: 30px" >
+                    </div>
+                    <div style="margin-bottom: 10px ">
                         题目：<input type="text" id="QuestionContent"  style="width: 500px;height: 100px" placeholder="请输入题目"
                                onfocus="if(this.placeholder=='请输入题目') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请输入题目'">
                         </div>
@@ -71,9 +74,15 @@
     function SubmitQuestion() {
         //TODO:获取题干和选项
         //此处 questioncontent是 id 为 question-content 的 html 元素
-            var quescontent = document.getElementById("QuestionContent");
+        var questionNO=document.getElementById("quesNo");
+        if(questionNO.value === "") {
+            alert("题目编号不能为空！");
+            return;
+        }
+
+        var quescontent = document.getElementById("QuestionContent");
         if(quescontent.value === "") {
-            alert("题干为空！");
+            alert("题干不能为空！");
             return;
         }
         var aitem = document.getElementById("Acontent");
@@ -118,7 +127,7 @@
             url:'Manager/QuestionManager.php',
             type:'POST',
             dataType:'json',
-            data:{act:'SetQuestion',quescontent:quescontent.value,Aitem:aitem.value,
+            data:{act:'SetQuestion',quesNo:questionNO.value,quescontent:quescontent.value,Aitem:aitem.value,
                 Bitem:bitem.value,Citem:citem.value,Ditem:ditem.value,Answer:rightanswer.value, Settime:settime.value},
             success:function (result) {
                  console.log("返回:"+result);

@@ -14,6 +14,7 @@ window.onload = function () {
         var d = date.getDate();
         var h = date.getHours();
         var mi = date.getMinutes();
+        mi = mi > 9 ? mi : '0' + mi;
         m = m > 9 ? m : '0' + m;
         return y + '-' + m + '-' + d + ' ' + h + ':' + mi;
     }
@@ -39,14 +40,14 @@ window.onload = function () {
        //total在html页面中定义了
        var newTotal;
         if (txt == '赞') {
-            newTotal = oldTotal + 1;          
-            praisesTotal.innerHTML = (newTotal == 1) ? '我觉得很赞' : '我和' + oldTotal + '个人觉得很赞';
+           // newTotal = oldTotal + 1;
+            //praisesTotal.innerHTML = (newTotal == 1) ? '我觉得很赞' : '我和' + oldTotal + '个人觉得很赞';
             el.innerHTML = '取消赞';
             
         }
         else {
-            newTotal = oldTotal - 1;            
-            praisesTotal.innerHTML = (newTotal == 0) ? '' : newTotal + '个人觉得很赞';
+           // newTotal = oldTotal - 1;
+            //praisesTotal.innerHTML = (newTotal == 0) ? '' : newTotal + '个人觉得很赞';
             el.innerHTML = '赞';
             
         }
@@ -70,14 +71,15 @@ window.onload = function () {
         //commentBox.setAttribute('user', 'self');
         commentBox.innerHTML =
                 '<div class="comment-content">' +
-                '<p class="comment-text"><span class="user" id="CommentUser"></span>' + textarea.value + '</p>' +
+                //'<p class="comment-text"><span class="user" >我：</span>' + textarea.value + '</p>' +
+                '<p class="comment-text"><span class="user" id="UserName" >：'+'</span>' + '<span id="commmentCONT">'+textarea.value+'</span>' + '</p>' +
                 '<div class="comment-time">' +formateDate(new Date()) +
                 '<div class="comment-op">'+
                 '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' +
                 '<a href="javascript:" class="comment-operate" style="margin-right:10px">回复</a>' +
                 '<a href="javascript:" class="comment-operate" style="margin-right:10px">删除</a>'+
                 '</div>'+
-                '<div class="praises-total" total="4" style="display:block;">'+
+                '<div class="praises-total"  style="display:block;">'+'共有<span id="praisetotal">人觉得很赞</span>'+
                 '</div>'+
                 '</div>'+
                 '</p>' +
@@ -144,7 +146,7 @@ window.onload = function () {
                     operate(el);
                     break;
             }
-        }
+        };
 
         //评论
         var textArea = boxs[i].getElementsByClassName('comment')[0];//给每个div容器设置输入框
@@ -154,7 +156,7 @@ window.onload = function () {
             this.parentNode.className = 'text-box text-box-on';//通过改变classname,改变输入框的样式
             this.value = this.value == '我要提问…' ? '' : this.value;//如果输入框内文字是我要提问…，那就将内容设为空，否则保持原来的值不变
             this.onkeyup();
-        }
+        };
 
         //评论失去焦点
         textArea.onblur = function () {
@@ -167,7 +169,7 @@ window.onload = function () {
                     me.parentNode.className = 'text-box';
                 }, 200);//设置失去焦点的200毫秒以后，调用function()函数
             }
-        }
+        };
 
         //功能：统计数字
         textArea.onkeyup = function () {
@@ -186,5 +188,5 @@ window.onload = function () {
         }
 
     }
-}
+};
 

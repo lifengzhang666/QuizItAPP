@@ -41,9 +41,13 @@ switch ($action){
 function Register(){
 
     //判断传入参数是否正确
-    if(!isset($_REQUEST["username"]) || empty($_REQUEST["username"])){
+    if(!isset($_REQUEST["username"]) || empty($_REQUEST["username"])) {
         echo json_encode('没有传入username或为空');
         return;
+    }
+        if(!isset($_REQUEST["userid"]) || empty($_REQUEST["userid"])){
+            echo json_encode('没有传入 userid或为空');
+            return;
     }
     if(!isset($_REQUEST["email"]) || empty($_REQUEST["email"])){
         echo json_encode('没有传入email或为空');
@@ -55,8 +59,10 @@ function Register(){
     }
 
 
+
     //获取参数
     $username=$_REQUEST["username"];
+    $userID=$_REQUEST["userid"];
     $email=$_REQUEST["email"];
     $pwd=$_REQUEST["password"];
 
@@ -72,7 +78,7 @@ function Register(){
         return ;
     }else{
         //不存在此user，可以创建用户
-        $insertsql="INSERT INTO `mytable` (`username`,`password`, `email`) VALUES ('$username', '$pwd', '$email')";
+        $insertsql="INSERT INTO `mytable` (`username`,`userID`,`password`, `email`) VALUES ('$username','$userID', '$pwd', '$email')";
         //exec执行SQL语句增删改查，返回影响行数
         $execres=$pdo->exec($insertsql);
         if($execres){

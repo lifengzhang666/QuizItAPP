@@ -207,7 +207,8 @@
                     console.log("登录成功");
                     console.log("sessid:"+result.sessid);
                     //存入cookie
-                    $.cookie('username',name);
+                    //$.cookie('username',name);
+                    $.cookie('username',user.value);
                     $.cookie('sessid',result.sessid);
                     window.location.href='index.html';
                 }else{

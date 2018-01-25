@@ -17,15 +17,15 @@
         .info .praise { color: #369; float: right; height: 20px; padding-left: 5px; background: url("images/bg2.jpg") no-repeat left top;}
         .info .praise:hover { text-decoration: underline; background: url("images/bg3.jpg") no-repeat left top;}
         .info .fa{float: right;margin-top: 4px;}
-        .praises-total { margin: 0 0 10px 0; height: 30px; background: rgb(247, 247, 247); padding: 5px 0 5px 25px; line-height: 19px;}
+        .praises-total { margin: 0 0 10px 0; height: 30px; width:100%; background: rgb(247, 247, 247); padding: 5px 0 5px 25px; line-height: 19px;}
         .comment-box { width:100%;display:inline-block;padding: 10px 0; border-top: 1px solid #eee;}
         .comment-box:hover { background: rgb(247, 247, 247);}
         .comment-box .myhead {  width:100%;float: left; width: 30px; height: 30px; margin-right: 10px;}
         .comment-box .comment-content { width:100%;float: left; }
-        .comment-box .comment-op { float: right; }
+        .comment-box .comment-content .comment-time .comment-op {display: inline-block; float: right; }
         .comment-box .comment-content .comment-time { color: #ccc; margin-top: 3px; line-height: 16px; position: relative;}
-        .comment-box .comment-content .comment-praise {  display: inline-block; color: #369; padding-left: 17px; height: 20px;   position: absolute; bottom: 0px; right: 44px;}
-        .comment-box .comment-content .comment-operate { float:right; display: inline-block; color: #369; height: 20px;  position: absolute; bottom: 0px; right: 10px;}
+        .comment-box .comment-content .comment-praise {   color: #369; padding-left: 17px; height: 20px;  right: 44px;}
+        .comment-box .comment-content .comment-operate {  float:right; display: inline-block; color: #369; height: 20px; }
         .comment-box .comment-content:hover .comment-praise { display: inline-block;}
         .comment-box .comment-content:hover .comment-operate { display: inline-block;}
         .text-box .comment { border: 1px solid #eee; display: block; width:100%;height: 30px; padding: 5px; resize: none; color: #ccc}
