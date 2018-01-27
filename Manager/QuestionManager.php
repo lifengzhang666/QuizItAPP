@@ -6,7 +6,7 @@
  * Time: 上午10:08
  */
 header("Content-Type:text/html;charset=utf-8");
-//date_default_timezone_set(PRC);
+date_default_timezone_set('PRC');
 
 //设置数据库参数,php用.连接字符串
 $schema='testschema';
@@ -51,6 +51,12 @@ switch ($action){
     case 'deletecomment':
         DeleteComment();
         break;
+    case 'likecomment':
+        LikeComment();
+            break;
+    case 'unlikecomment':
+        UnLikeComment();
+            break;
 
 }
 return;
@@ -276,7 +282,7 @@ function SubmitComment(){
     }
 
     //获取参数
-    date_default_timezone_set(PRC);
+
     $CC=$_REQUEST["CommentContent"];
     $QID=$_REQUEST["QuestionID"];
     $UserName=$_REQUEST["SessName"];
@@ -315,9 +321,24 @@ function ShowComment(){
 
     //fetchAll可以获取返回结果的剩余全部数据放在数组里
     $resultalldata=$res->fetchAll(PDO::FETCH_ASSOC);
+    $zanresultdata=array();
+    foreach ($resultalldata as $row){
+        $comid=$row['id'];
+        $comuser=$row['UserName'];
+        $sql="select * from liketable WHERE CommentID='$comid' And LikeUser='$comuser'";
+        //query查询SQL语句，返回PDOstatement对象
+        $res=$pdo->query($sql);
+        $resultdata=$res->fetch(PDO::FETCH_ASSOC);
+        if($resultdata){
+            //已经点赞
+            $zanresultdata[]=1;
+        }else{
+            $zanresultdata[]=0;
+        }
+    }
 
     if($resultalldata){
-        $data = array('data'=> 1,'allcomment'=>$resultalldata);
+        $data = array('data'=> 1,'allcomment'=>$resultalldata,'zandata'=>$zanresultdata);
         echo json_encode($data);
         return;
     }
@@ -389,6 +410,92 @@ function DeleteComment(){
     }
 }
 
+function LikeComment(){
+    if(!isset($_REQUEST["username"]) || empty($_REQUEST["username"])){
+        echo json_encode('没有传入 username 或为空');
+        return;
+    }
+    if(!isset($_REQUEST["commentid"]) || empty($_REQUEST["commentid"])){
+        echo json_encode('没有传入 commentid 或为空');
+        return;
+    }
+
+    $username=$_REQUEST["username"];
+    $commentid=$_REQUEST["commentid"];
+    //date_default_timezone_set(PRC);
+    $time=date("Y-m-d H:i:s",time());
+    //数据库相关
+    $pdo =ConnectMysql();
+
+    $sql="select * from liketable WHERE CommentID='$commentid' AND LikeUser='$username'";
+    //query查询SQL语句，返回PDOstatement对象
+    $res=$pdo->query($sql);
+    //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
+    $resultdata=$res->fetch(PDO::FETCH_ASSOC);
+    if($resultdata){
+        //已点赞
+        echo json_encode(2);
+        return;
+    }
+    $updateLikeNum="UPDATE `commenttable` SET `TotalLike`=`TotalLike`+1 WHERE `id`='$commentid';";
+    //exec执行SQL语句增删改查，返回影响行数
+    $execres=$pdo->exec($updateLikeNum);
+
+    $inserLikeTable="INSERT INTO `liketable` (`CommentID`, `LikeTime`, `LikeUser`) VALUES ('$commentid', '$time', '$username');";
+    $execres2=$pdo->exec($inserLikeTable);
+    if($execres&&$execres2){
+        echo json_encode(1);
+        return;
+    }else{
+        echo json_encode('提交失败'.$execres.'||insert||'.$execres2);
+        return;
+    }
+}
+
+function UnLikeComment(){
+    if(!isset($_REQUEST["username"]) || empty($_REQUEST["username"])){
+        echo json_encode('没有传入 username 或为空');
+        return;
+    }
+    if(!isset($_REQUEST["commentid"]) || empty($_REQUEST["commentid"])){
+        echo json_encode('没有传入 commentid 或为空');
+        return;
+    }
+
+    $username=$_REQUEST["username"];
+    $commentid=$_REQUEST["commentid"];
+    //date_default_timezone_set(PRC);
+    $time=date("Y-m-d H:i:s",time());
+    //数据库相关
+    $pdo =ConnectMysql();
+
+    $sql="select * from liketable WHERE CommentID='$commentid' AND LikeUser='$username'";
+    //query查询SQL语句，返回PDOstatement对象
+    $res=$pdo->query($sql);
+    //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
+    $resultdata=$res->fetch(PDO::FETCH_ASSOC);
+    if(!$resultdata){
+        //没有数据不能取消点赞
+        echo json_encode(2);
+        return;
+    }
+
+
+
+    $updateLikeNum="UPDATE `commenttable` SET `TotalLike`=`TotalLike`-1 WHERE `id`='$commentid';";
+    //exec执行SQL语句增删改查，返回影响行数
+    $execres=$pdo->exec($updateLikeNum);
+
+    $delLikeTable="DELETE FROM `testschema`.`liketable` WHERE `CommentID`='$commentid' AND `LikeUser`='$username';";
+    $execres2=$pdo->exec($delLikeTable);
+    if($execres&&$execres2){
+        echo json_encode(1);
+        return;
+    }else{
+        echo json_encode('提交失败'.$execres.'||insert||'.$execres2);
+        return;
+    }
+}
     //数据库连接
 function ConnectMysql(){
     //引用全局变量
@@ -402,3 +509,4 @@ function ConnectMysql(){
 return;
     }
 }
+

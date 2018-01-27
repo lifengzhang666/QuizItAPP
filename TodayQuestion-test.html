@@ -263,11 +263,13 @@
             success:function (result) {
                 if(result.data==1){
                     //console.log(result.allcomment);
+                    //console.log(result.zandata);
                     var commentArray=result.allcomment;
+                    var zanArray=result.zandata;
                     //遍历数组的每一行，一行是一条评论
                     for(i in commentArray){
                         //点后面是数据库的列名
-                        PutComment(commentArray[i].id,commentArray[i].UserName,commentArray[i].ObjUserName,commentArray[i].CommentContent,commentArray[i].CommentTime);
+                        PutComment(commentArray[i].id,commentArray[i].UserName,commentArray[i].ObjUserName,commentArray[i].CommentContent,commentArray[i].CommentTime,commentArray[i].TotalLike,zanArray[i]);
 					}
 
 
@@ -292,7 +294,8 @@
     }
     //执行一次函数
     ShowComment();
-    function PutComment(id,userName,objUserName,comContent,comTime){
+    function PutComment(id,userName,objUserName,comContent,comTime,totalLike,likeState){
+        //console.log(likeState);
         //要append的元素
         var commentList = document.getElementById('mycommentbox');
         //生成一个div元素
@@ -303,8 +306,14 @@
 		var myHTML='<div class="comment-content">'+'<span class="commentid" style="display: none">'+id+'</span>'+
         	'<p class="comment-text"><span class="user" id="UserName" >'+userName+'：</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
             '<div class="comment-time">' +comTime +
-            '<div class="comment-op">'+
-            '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' +
+            '<div class="comment-op">';
+		if(likeState==1){
+            myHTML+= '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">取消赞</a>' ;
+       }else{
+            myHTML+= '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' ;
+        }
+
+        myHTML+=
             '<a href="javascript:" class="comment-operate" style="margin-right:10px">回复</a>';
 		//判断是不是本人评论，是本人就显示删除
 		if(userName==$.cookie('username')){
@@ -312,7 +321,7 @@
 		}
         myHTML+=
             '</div>'+
-            '<div class="praises-total"  style="display:block;">'+'共有<span id="praisetotal">人觉得很赞</span>'+
+            '<div class="praises-total"  style="display:block;">'+'共有<span id="praisetotal">'+totalLike+'</span>人觉得很赞'+
             '</div>'+
             '</div>'+
             '</p>' +

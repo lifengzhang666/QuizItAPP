@@ -38,18 +38,57 @@ window.onload = function () {
         var oldTotal = parseInt(praisesTotal.getAttribute('total'));
         //parseInt() 函数可解析一个字符串，并返回一个整数。此处是将total的值以数值的格式传给oldtotal.
        //total在html页面中定义了
+
+        var commentcontent=el.parentNode.parentNode.parentNode;
+        var commentid=commentcontent.getElementsByClassName('commentid')[0].innerHTML;
+        var username =$.cookie('username');
        var newTotal;
         if (txt == '赞') {
            // newTotal = oldTotal + 1;
             //praisesTotal.innerHTML = (newTotal == 1) ? '我觉得很赞' : '我和' + oldTotal + '个人觉得很赞';
             el.innerHTML = '取消赞';
+            $.ajax({
+                url:'Manager/QuestionManager.php',
+                type:'POST',
+                dataType:'json',
+                data:{act:'likecomment',username:username,commentid:commentid},
+                success:function (result) {
+                    if(result===1) {
+                        console.log("zan成功");
+                    }else if(result===2){
+                        console.log('已经点赞');
+                    }else{
+                        console.log('提交失败:'+result);
+                    }
+                },
+                error:function (result) {
+                    console.log(result);
+                }
+            });
             
         }
         else {
            // newTotal = oldTotal - 1;
             //praisesTotal.innerHTML = (newTotal == 0) ? '' : newTotal + '个人觉得很赞';
             el.innerHTML = '赞';
-            
+            $.ajax({
+                url:'Manager/QuestionManager.php',
+                type:'POST',
+                dataType:'json',
+                data:{act:'unlikecomment',username:username,commentid:commentid},
+                success:function (result) {
+                    if(result===1) {
+                        console.log("unzan成功");
+                    }else if(result===2){
+                        console.log('已经取消点赞');
+                    }else{
+                        console.log('提交失败:'+result);
+                    }
+                },
+                error:function (result) {
+                    console.log(result);
+                }
+            });
         }
        praisesTotal.setAttribute('total', newTotal);//setAttribute() 方法添加指定的属性，并为其赋指定的值。
        //此处是把newtotal的值赋给total。

@@ -8,7 +8,7 @@ DataManager.php 登录接口、注册接口、增，查询
 
 还需添加功能：
 评论的点赞计数
-删除评论后数据库中的评论没有删除
+
 日历页和复习区的详情页的跳转
 学生行为数据没有记录
 questionmanager的显示评论的function中，数据选择的WHERE语句需要修改
@@ -24,4 +24,3 @@ questionmanager的显示评论的function中，数据选择的WHERE语句需要�
 优化界面
 
 questionnum冗余，直接用ID 代替
-删除就不要显示，但不从数据库删除
