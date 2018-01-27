@@ -34,8 +34,8 @@
 
 <!--下面这段代码是侧边导航条的代码-->
 <div id="sideMenuContainer">
-  <a href="#" title="今日题" style="color: #FFFFFF;"><span class="fa fa-pencil-square-o"></span></a>
-  <a href="#" title="历史题" style="color: #FFFFFF;"><span class="fa fa-list-alt"></span></a>
+  <a href="TodayQuestion-test.html" title="今日题" style="color: #FFFFFF;"><span class="fa fa-pencil-square-o"></span></a>
+  <a href="review.html" title="历史题" style="color: #FFFFFF;"><span class="fa fa-list-alt"></span></a>
 </div>	
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -90,11 +90,13 @@
 				<div id="list">
 					<div class="box clearfix">
 						<div class="content">
+							<span id="commentObjUsername" style="display: none;"></span>
 							<div class="comment-list" id="mycommentbox">
 								<div class="huifu-list" id="huifu-list"></div>
 							</div>
 							<div class="text-box">
-								<textarea class="comment" id="CommentText" autocomplete="off">我要提问…</textarea>
+
+								<textarea class="comment" id="CommentText"  autocomplete="off">我要提问…</textarea>
 								<button class="btn" onclick="SubmitComment()">发送</button>
 								<span class="word"><span class="length">0</span>/140</span>
 							</div>
@@ -172,6 +174,7 @@
             success:function (result) {
                 if(result.data==1){
                     //取到数据放到网页上
+                    console.log('获取题目成功');
                     console.log(result.question);
                     console.log(result.itemA);
 
@@ -202,8 +205,10 @@
 
                 },
 
-            error:function (result) {
-                console.log(result);
+            error:function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest.status);
+                console.log(XMLHttpRequest.readyState);
+                console.log		(textStatus);
             }
         });
 
@@ -216,9 +221,11 @@
         var commenttext=document.getElementById("CommentText");
         var questionID=document.getElementById("Numq").innerHTML;
         var sessname=$.cookie('username');
+        var objUsername=document.getElementById("commentObjUsername").innerHTML;
         console.log('pinglun:'+commenttext.value);
         console.log('quesID:'+questionID);
         console.log('uname:'+sessname);
+
 
         if(commenttext.value === "") {
             alert("评论内容不能为空！");
@@ -232,7 +239,7 @@
             type:'POST',
             dataType:'json',
             data:{act:'SubmitComment',CommentContent:commenttext.value,
-				QuestionID:questionID,SessName:sessname},
+				QuestionID:questionID,SessName:sessname,ObjUsername:objUsername},
             success:function (result) {
                 console.log("返回:"+result);
                 if(result===1) {
@@ -255,12 +262,12 @@
             data:{act:'showcomment'},
             success:function (result) {
                 if(result.data==1){
-                    console.log(result.allcomment);
+                    //console.log(result.allcomment);
                     var commentArray=result.allcomment;
                     //遍历数组的每一行，一行是一条评论
                     for(i in commentArray){
                         //点后面是数据库的列名
-                        PutComment(commentArray[i].UserName,commentArray[i].ObjUserName,commentArray[i].CommentContent,commentArray[i].CommentTime);
+                        PutComment(commentArray[i].id,commentArray[i].UserName,commentArray[i].ObjUserName,commentArray[i].CommentContent,commentArray[i].CommentTime);
 					}
 
 
@@ -285,7 +292,7 @@
     }
     //执行一次函数
     ShowComment();
-    function PutComment(userName,objUserName,comContent,comTime){
+    function PutComment(id,userName,objUserName,comContent,comTime){
         //要append的元素
         var commentList = document.getElementById('mycommentbox');
         //生成一个div元素
@@ -293,7 +300,7 @@
         commentBox.className = 'comment-box clearfix';
         //commentBox.setAttribute('user', 'self');
 
-		var myHTML='<div class="comment-content">'+
+		var myHTML='<div class="comment-content">'+'<span class="commentid" style="display: none">'+id+'</span>'+
         	'<p class="comment-text"><span class="user" id="UserName" >'+userName+'：</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
             '<div class="comment-time">' +comTime +
             '<div class="comment-op">'+

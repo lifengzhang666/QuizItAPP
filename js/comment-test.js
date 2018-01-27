@@ -70,9 +70,9 @@ window.onload = function () {
         commentBox.className = 'comment-box clearfix';
         //commentBox.setAttribute('user', 'self');
         commentBox.innerHTML =
-                '<div class="comment-content">' +
+                '<div class="comment-content">' +'<span class="commentid"></span>'+
                 //'<p class="comment-text"><span class="user" >我：</span>' + textarea.value + '</p>' +
-                '<p class="comment-text"><span class="user" id="UserName" >：'+'</span>' + '<span id="commmentCONT">'+textarea.value+'</span>' + '</p>' +
+                '<p class="comment-text"><span class="user" id="UserName" >'+$.cookie('username')+'</span>' +':'+ '<span id="commmentCONT">'+textarea.value+'</span>' + '</p>' +
                 '<div class="comment-time">' +formateDate(new Date()) +
                 '<div class="comment-op">'+
                 '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' +
@@ -129,14 +129,35 @@ window.onload = function () {
         var user = commentBox.getElementsByClassName('user')[0].innerHTML;
         var textarea = box.getElementsByClassName('comment')[0];//获取输入框
         if (txt == '回复') {
+            document.getElementById("commentObjUsername").innerHTML=user;
             textarea.focus();
-            textarea.value = '回复' + user;
+            textarea.value = '回复' + user+':';
             textarea.onkeyup();//计算字数，即计算“回复。。。“几个字的字数
         }
         else {
+            var deleteID=commentBox.getElementsByClassName('commentid')[0].innerHTML;
+            $.ajax({
+                url:'Manager/QuestionManager.php',
+                type:'POST',
+                dataType:'json',
+                data:{act:'deletecomment',deleteid:deleteID},
+                success:function (result) {
+                    console.log("返回:"+result);
+                    if(result===1) {
+                        console.log("删除成功");
+                        alert("删除成功");
+                    }
+                },
+                error:function (result) {
+                    console.log(result);
+                }
+            });
+
             removeNode(commentBox.parentNode);//删除整条评论
+
         }
-    }
+        }
+
 
     //把事件代理到每条分享div容器
     for (var i = 0; i < boxs.length; i++) {

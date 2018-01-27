@@ -6,6 +6,7 @@
  * Time: 上午10:08
  */
 header("Content-Type:text/html;charset=utf-8");
+//date_default_timezone_set(PRC);
 
 //设置数据库参数,php用.连接字符串
 $schema='testschema';
@@ -46,6 +47,9 @@ switch ($action){
         break;
     case 'showreview':
         ShowReview();
+        break;
+    case 'deletecomment':
+        DeleteComment();
         break;
 
 }
@@ -272,17 +276,16 @@ function SubmitComment(){
     }
 
     //获取参数
-
+    date_default_timezone_set(PRC);
     $CC=$_REQUEST["CommentContent"];
     $QID=$_REQUEST["QuestionID"];
     $UserName=$_REQUEST["SessName"];
-    $ObjUser=$_REQUEST["objName"];
-    $time=date("Y-m-d-h-s",time());
+    $ObjUser=$_REQUEST["ObjUsername"];
+    $time=date("Y-m-d H:i:s",time());
+
 
     //数据库相关
     $pdo =ConnectMysql();
-    //创建题目
-    //$insertsql="INSERT INTO `commenttable` (`CommentContent`,`QuestionID`,`UserName`) VALUES ('$CC','$QID','$SessName')";
     $insertsql="INSERT INTO `commenttable` (`CommentContent`,`QuestionID`,`UserName`,`ObjUserName`,`CommentTime`) VALUES ('$CC','$QID','$UserName','$ObjUser','$time')";
     //exec执行SQL语句增删改查，返回影响行数
     $execres=$pdo->exec($insertsql);
@@ -300,10 +303,11 @@ function SubmitComment(){
 
 }
 
+//显示评论
 function ShowComment(){
 
     $pdo =ConnectMysql();
-    $sql="select * from commenttable WHERE QuestionID='100'";
+    $sql="select * from commenttable WHERE QuestionID='105'";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
     //取返回结果的下一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
@@ -322,24 +326,70 @@ function ShowComment(){
         json_encode($data);
         return;
         }
-    //如果有数据
-//    if($resultdata){
-//        //中括号里是数据库列名
-//        $username=$resultdata['UserName'];
-//        $comment=$resultdata['CommentContent'];
-//        //创建数组
-//        //成功时data为1
-//        $data = array('data'=> 1,'username'=>$username,'comment'=>$comment);
-//        //变成json格式，返回
-//        echo json_encode($data);
-//        return;
-//    }else{
-//        $data = array('data'=> 0);
-//        echo json_encode($data);
-//        return;
-//    }
 }
-//数据库连接
+
+//显示复习题
+function ShowReview(){
+    //数据库相关
+    $pdo =ConnectMysql();
+    $sql="select * from qctable";
+    //query查询SQL语句，返回PDOstatement对象
+    $res=$pdo->query($sql);
+    //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
+    $resultalldata=$res->fetchAll(PDO::FETCH_ASSOC);
+
+    if($resultalldata){
+        $data = array('data'=> 1,'allreview'=>$resultalldata);
+        echo json_encode($data);
+        return;
+    }
+    else{
+        $data = array('data'=> 0);
+        json_encode($data);
+        return;
+    }
+
+    //$resultdata=$res->fetch(PDO::FETCH_ASSOC);
+    //如果有数据
+  //  if($resultdata){
+        //中括号里是数据库列名
+      //  $questionNum=$resultdata['QuestionNum'];
+     //   $question=$resultdata['quescontent'];
+        //创建数组
+        //成功时data为1
+      //  $data = array('data'=> 1,'questionnum'=>$questionNum,'question'=>$question);
+        //变成json格式，返回
+      //  echo json_encode($data);
+     //   return;
+    //}else{
+      //  $data = array('data'=> 0);
+       // echo json_encode($data);
+      //  return;
+   // }
+}
+
+function DeleteComment(){
+
+    if(!isset($_REQUEST["deleteid"]) || empty($_REQUEST["deleteid"])){
+        echo json_encode('没有传入deleteid或为空');
+        return;
+    }
+    $delid=$_REQUEST["deleteid"];
+    //数据库相关
+    $pdo =ConnectMysql();
+    $insertsql="UPDATE `commenttable` SET `DeleteState`='1' WHERE `id`='$delid';";
+    //exec执行SQL语句增删改查，返回影响行数
+    $execres=$pdo->exec($insertsql);
+    if($execres){
+        echo json_encode(1);
+        return;
+    }else{
+        echo json_encode('提交失败'.$execres);
+        return;
+    }
+}
+
+    //数据库连接
 function ConnectMysql(){
     //引用全局变量
     global $dsn,$db_user,$db_pass;
@@ -349,32 +399,6 @@ function ConnectMysql(){
         return $mypdo;
     }catch(PDOException $e){
         echo json_encode('数据库连接失败'.$e->getMessage());
-
-    }
-}
-
-function ShowReview(){
-    //数据库相关
-    $pdo =ConnectMysql();
-    $sql="select * from qctable ";
-    //query查询SQL语句，返回PDOstatement对象
-    $res=$pdo->query($sql);
-    //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
-    $resultdata=$res->fetch(PDO::FETCH_ASSOC);
-    //如果有数据
-    if($resultdata){
-        //中括号里是数据库列名
-        $questionNum=$resultdata['QuestionNum'];
-        $question=$resultdata['quescontent'];
-        //创建数组
-        //成功时data为1
-        $data = array('data'=> 1,'questionnum'=>$questionNum,'question'=>$question);
-        //变成json格式，返回
-        echo json_encode($data);
-        return;
-    }else{
-        $data = array('data'=> 0);
-        echo json_encode($data);
-        return;
+return;
     }
 }

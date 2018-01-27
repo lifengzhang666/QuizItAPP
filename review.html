@@ -40,11 +40,18 @@
             data:{act:'showreview'},
             success:function (result) {
                 if(result.data==1){
+                    var reviewArray=result.allreview;
+                    //遍历数组的每一行，一行是一条评论
+                    for(i in reviewArray){
+                        //点后面是数据库的列名
+                        PutReview(reviewArray[i].QuestionNum,reviewArray[i].quescontent);
+                    }
+
                     //取到数据放到网页上
-                    var QuestionID=result.questionnum;
-                    var content=result.question;
+                   // var QuestionID=result.questionnum;
+                   // var content=result.question;
                     //被评论和时间没取
-                    PutReview(QuestionID,content);
+                   // PutReview(QuestionID,content);
 
 
                 }else{

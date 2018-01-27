@@ -135,7 +135,7 @@
 							<input type="password" class="form-control" id="RePassword" placeholder="请再次输入密码"
 								onfocus="if(this.placeholder=='请再次输入密码') this.placeholder=''" onblur="if(this.placeholder=='') this.placeholder='请再次输入密码'">													
 						</div>					        
-                            <input type="button" class="btn"  value="注册" onclick="Register()">
+                            <input type="button" class="btn" id="RegBtn" value="注册" onclick="Register()">
 						    <div>
 	                    	  <a href="login.html"><p style="text-align: center;margin-top: 20px;">注册成功？点击此处进行登陆</p></a>
 	                        </div>
@@ -192,7 +192,9 @@
                     console.log("返回:"+result);
                     if(result===1) {
                         console.log("注册成功");
-                       window.location.href = 'login.html';
+                        var a=document.getElementById("RegBtn");
+						 a.value="注册成功";
+                       //window.location.href = 'login.html';
                     }
                 },
 				error:function (result) {
