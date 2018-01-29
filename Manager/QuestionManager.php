@@ -57,6 +57,13 @@ switch ($action){
     case 'unlikecomment':
         UnLikeComment();
             break;
+    case 'showquestion1':
+        ShowQuestion1();
+        break;
+    case 'showcomment1':
+        ShowComment1();
+        break;
+
 
 }
 return;
@@ -245,6 +252,8 @@ function ShowQuestion(){
     //数据库相关
     $pdo =ConnectMysql();
     $time=date("Ymd",time());
+    //不确定内容
+
     $sql="select * from qctable WHERE SetTime='$time'";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
@@ -253,7 +262,7 @@ function ShowQuestion(){
     //如果有数据
     if($resultdata){
         //中括号里是数据库列名
-        $questionNum=$resultdata['QuestionNum'];
+        $questionNum=$resultdata['ID'];
         $question=$resultdata['quescontent'];
         $selectA=$resultdata['Aitem'];
         $selectB=$resultdata['Bitem'];
@@ -299,7 +308,7 @@ function SubmitComment(){
         echo json_encode(1);
         return;
     }else{
-        echo json_encode('提交失败'.$execres);
+        echo json_encode('插入数据失败'.$execres);
         return;
     }
 
@@ -312,8 +321,14 @@ function SubmitComment(){
 //显示评论
 function ShowComment(){
 
+    if(!isset($_REQUEST["Questionid"]) || empty($_REQUEST["Questionid"])){
+        echo json_encode('没有传入Questionid或为空');
+        return;
+    }
+    $QID=$_REQUEST["Questionid"];
+
     $pdo =ConnectMysql();
-    $sql="select * from commenttable WHERE QuestionID='105'";
+    $sql="select * from commenttable WHERE QuestionID='$QID'";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
     //取返回结果的下一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
@@ -451,6 +466,45 @@ function LikeComment(){
         return;
     }
 }
+
+function ShowQuestion1(){
+
+    //数据库相关
+    $pdo =ConnectMysql();
+    //$time=date("Ymd",time());
+    //不确定内容
+    $choosedate=$_REQUEST["choosedate"];
+    $sql="select * from qctable WHERE SetTime='$choosedate'";
+    //query查询SQL语句，返回PDOstatement对象
+    $res=$pdo->query($sql);
+    //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
+    $resultdata=$res->fetch(PDO::FETCH_ASSOC);
+    //如果有数据
+    if($resultdata){
+        //中括号里是数据库列名
+        $questionNum=$resultdata['ID'];
+        $question=$resultdata['quescontent'];
+        $selectA=$resultdata['Aitem'];
+        $selectB=$resultdata['Bitem'];
+        $selectC=$resultdata['Citem'];
+        $selectD=$resultdata['Ditem'];
+        $Settime=$resultdata['SetTime'];
+        $Showans=$resultdata['TrueAns'];
+        //创建数组
+        //成功时data为1
+        $data = array('data'=> 1,'questionnum'=>$questionNum,'question'=>$question,'itemA' => $selectA,
+            'itemB' => $selectB,'itemC' => $selectC,'itemD' => $selectD,'Settime'=>$Settime,'showanswer'=>$Showans);
+        //变成json格式，返回
+        echo json_encode($data);
+        return;
+    }else{
+        $data = array('data'=> 0);
+        echo json_encode($data);
+        return;
+    }
+}
+
+
 
 function UnLikeComment(){
     if(!isset($_REQUEST["username"]) || empty($_REQUEST["username"])){

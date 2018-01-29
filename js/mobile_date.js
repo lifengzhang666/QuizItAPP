@@ -59,8 +59,12 @@ function datt(nian,yue,ri){
     var html='';
     for(var i=1;i<=days;i++){
         var time=new Date(nian,yue,i).getTime();
-       
-            html+="<li data-jr="+yue+"-"+ i +" data-id="+time+" data-date="+ nian+"-"+yue+"-"+i+"><span>"+i+"</span></li>"
+        if(yue<=9){
+            html+="<li data-jr="+yue+"-"+ i +" data-id="+time+" data-date="+ nian+"0"+yue+i+"><span>"+i+"</span></li>"
+        }else{
+           // html+="<li data-jr="+yue+"-"+ i +" data-id="+time+" data-date="+ nian+yue+i+"><a href='calendar-question.html' style='color: #3D3D3D;line-height: 3.5em'>"+i+"</a></li>"
+            html+="<li data-jr="+yue+"-"+ i +" data-id="+time+" data-date="+ nian+yue+i+"><span>"+i+"</span></li>"
+        }
     }
     $('.date ul').html(html);//选取类为date的<ul>元素
 
@@ -81,38 +85,17 @@ function datt(nian,yue,ri){
         if(wk==6||wk==0){
             $('.date ul li').eq(k).addClass('act_wk')
         }
-        if(tt_time != td_time){
+        if(tt_time != td_time||tt_time == td_time){
             $('.date ul li').eq(k).click(function(){
                 var _this=$(this);
-                //如果是双选日期则使用这个；
-                    /* if(num%2==0){
-                    _this.addClass('act_date');     //选择开始日期
-                    _this.siblings('li').removeClass('act_date');
-                    var dr=_this.attr('data-date');
-                    console.log(dr);
-                    num++;
-                }else if(num%2!=0){
-                    _this.addClass('act_ds');       //选择结束日期
-                    _this.siblings('li').removeClass('act_ds');
-                    var dd=_this.attr('data-date');
-                    console.log(dd);
-                    num++;
-                }*/
-                //如果是单选日期则使用这个；
                 _this.addClass('act_date');     //选择开始日期
                 _this.siblings('li').removeClass('act_date');
                 var dr=_this.attr('data-date');
-                console.log(dr);
-            });
-        }else if(tt_time == td_time){
-            $('.date ul li').eq(k).addClass('act_date');
-            $('.date ul li').eq(k).click(function(){
-                var _this=$(this);
-                _this.addClass('act_date');
-                _this.siblings('li').removeClass('act_date');
-                var dr=_this.attr('data-date');
-                // console.log(dr);
-            });
+                console.log("选择日期为:"+dr);
+                //不确定内容
+                $.cookie('choosedate',dr);
+                window.location.href='calendar-question.html';
+            })
         }
         //
         //将小于今天的日期设为不可点击状态

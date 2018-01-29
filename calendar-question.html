@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/comment.css">
 	<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-	<script type="text/javascript" src="js/comment-test.js"></script>
+	<script type="text/javascript" src="js/comment.js"></script>
 	<link rel="stylesheet" href="css/style.css">
     <script src="js/jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -33,7 +33,7 @@
 </div>
 
 <!--下面这段代码是侧边导航条的代码-->
-<div id="sideMenuContainer">
+<div id="sideMenuContainer" >
   <a href="TodayQuestion-test.html" title="今日题" style="color: #FFFFFF;"><span class="fa fa-pencil-square-o"></span></a>
   <a href="review.html" title="历史题" style="color: #FFFFFF;"><span class="fa fa-list-alt"></span></a>
 </div>	
@@ -95,7 +95,6 @@
 								<div class="huifu-list" id="huifu-list"></div>
 							</div>
 							<div class="text-box">
-
 								<textarea class="comment" id="CommentText"  autocomplete="off">我要提问…</textarea>
 								<button class="btn" onclick="SubmitComment()">发送</button>
 								<span class="word"><span class="length">0</span>/140</span>
@@ -107,7 +106,6 @@
 		</div>
 	</div>
 </div>
-
 <script>
 	//TODO:显示/隐藏正确答案
     function ShowAnswer() {
@@ -165,12 +163,13 @@
     }
 
     function ShowQuestion(){
+        var sessdate=$.cookie('choosedate');
         //取数据显示在页面
         $.ajax({
             url:'Manager/QuestionManager.php',
             type:'POST',
             dataType:'json',
-            data:{act:'showquestion'},
+            data:{act:'showquestion1',choosedate:sessdate},
             success:function (result) {
                 if(result.data==1){
                     //取到数据放到网页上
@@ -178,6 +177,7 @@
                     console.log(result.question);
                     console.log(result.itemA);
 
+                    //题号
                     var questionNum=document.getElementById('Numq');
                     questionNum.innerText=result.questionnum;
 
@@ -199,6 +199,8 @@
                     var Titem=document.getElementById('TrueItem');
                     Titem.innerText=result.showanswer;
 
+                    //显示评论，参数为题号
+                    ShowComment(result.questionnum);
 				}else{
                     console.log("没有题目");
 				}
@@ -208,7 +210,7 @@
             error:function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log(XMLHttpRequest.status);
                 console.log(XMLHttpRequest.readyState);
-                console.log		(textStatus);
+                console.log	(textStatus);
             }
         });
 
@@ -221,6 +223,7 @@
         var commenttext=document.getElementById("CommentText");
         var questionID=document.getElementById("Numq").innerHTML;
         var sessname=$.cookie('username');
+        var sessdate=$.cookie('choosedate');
         var objUsername=document.getElementById("commentObjUsername").innerHTML;
         console.log('pinglun:'+commenttext.value);
         console.log('quesID:'+questionID);
@@ -253,13 +256,14 @@
         console.log("结束ajax");
     }
 
-    function ShowComment(){
+    //调用的时候传入题号
+    function ShowComment(questionID){
         //取数据显示在页面
         $.ajax({
             url:'Manager/QuestionManager.php',
             type:'POST',
             dataType:'json',
-            data:{act:'showcomment'},
+            data:{act:'showcomment',Questionid:questionID},
             success:function (result) {
                 if(result.data==1){
                     //console.log(result.allcomment);
@@ -293,7 +297,7 @@
         });
     }
     //执行一次函数
-    ShowComment();
+    //ShowComment();
     function PutComment(id,userName,objUserName,comContent,comTime,totalLike,likeState){
         //console.log(likeState);
         //要append的元素
@@ -369,8 +373,6 @@
 
 
 	}
-
-
 
 </script>
 </body>

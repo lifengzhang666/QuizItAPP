@@ -23,4 +23,4 @@ questionmanager的显示评论的function中，数据选择的WHERE语句需要�
 
 优化界面
 
-questionnum冗余，直接用ID 代替
+
