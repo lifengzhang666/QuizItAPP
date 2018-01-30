@@ -48,64 +48,9 @@
 </script>
 
 <!--下面这段代码是题目显示区的代码-->
-	<form class="question-content" style="border:3px;text-align: center;margin-top: 70px;font-size:20px;line-height: 50px;">
-		<div style="text-align:left;margin-left: 30px;margin-bottom: 10px;font-weight: bold">
-		    第<span class="Numq" id="Numq" style="margin-left: 10px;margin-right: 10px"></span>题：<span class="quescont" id="quescont"></span>
-		</div>
-		<div>
-			<label style="text-align:left;margin-left: 30px;display: block">
-				<input type="radio"  id="A-radio" name="item" value="A">A:<span class="Acont" id="Acont"></span>
-			</label>
-			<label style="text-align:left;margin-left: 30px;display: block">
-				<input type="radio" id="B-radio"  name="item" value="B">B:<span class="Bcont" id="Bcont"></span>
-			</label>
-			<label style="text-align:left;margin-left: 30px;display: block">
-				<input type="radio" id="C-radio" name="item" value="C">C:<span class="Ccont" id="Ccont"></span>
-			</label>
-			<label style="text-align:left;margin-left: 30px;display: block">
-				<input type="radio" id="D-radio" name="item" value="D">D:<span class="Dcont" id="Dcont" ></span>
-			</label>
-			<div id="Ransdiv" style="display: none">
-			正确答案：
-			<span id="TrueItem" ></span>
-			</div>
-		</div>
-		<div  class="anscheck" id="check" style="display: none"></div>
-
-		<label>
-		<input class="btn" type="button" value="提交答案" onclick="SubmitAnswer()" style="background-color: darksalmon;width: 100px;font-size: medium;font-weight: bold"/>
-		</label>
-		<label>
-			<input type="button" class="btn" id="TrueAnswer" value="查看答案" onclick="ShowAnswer()"
-				   style="background-color:cadetblue;width: 100px;font-size: medium;font-weight: bold;">
-		</label>
-	</form>
-
-<!--下面的代码是讨论区的代码-->
-<div class="demo" style="width:100%;padding: 20px 0;margin-top: 50px;position:absolute;z-index: -1;">
-	<div class="discuss" >讨论区</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div id="list">
-					<div class="box clearfix">
-						<div class="content">
-							<span id="commentObjUsername" style="display: none;"></span>
-							<div class="comment-list" id="mycommentbox">
-								<div class="huifu-list" id="huifu-list"></div>
-							</div>
-							<div class="text-box">
-								<textarea class="comment" id="CommentText"  autocomplete="off">我要提问…</textarea>
-								<button class="btn" onclick="SubmitComment()">发送</button>
-								<span class="word"><span class="length">0</span>/140</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="QandDList" class="question-content" style="border:3px;text-align: center;margin-top: 70px;font-size:20px;line-height: 50px;">
 </div>
+
 <script>
 	//TODO:显示/隐藏正确答案
     function ShowAnswer() {
@@ -162,63 +107,11 @@
     console.log("结束ajax");
     }
 
-    function ShowQuestion(){
-        //取数据显示在页面
-        $.ajax({
-            url:'Manager/QuestionManager.php',
-            type:'POST',
-            dataType:'json',
-            data:{act:'showquestion'},
-            success:function (result) {
-                if(result.data==1){
-                    //取到数据放到网页上
-                    console.log('获取题目成功');
-
-                    var questionNum=document.getElementById('Numq');
-                    questionNum.innerText=result.questionnum;
-
-					//显示评论，参数为题号
-                    ShowComment(result.questionnum);
-
-                    var questionEle=document.getElementById('quescont');
-                    questionEle.innerText=result.question;
-
-                    var ACONT=document.getElementById('Acont');
-                    ACONT.innerText=result.itemA;
-
-                    var BCONT=document.getElementById('Bcont');
-                    BCONT.innerText=result.itemB;
-
-                    var CCONT=document.getElementById('Ccont');
-                    CCONT.innerText=result.itemC;
-
-                    var DCONT=document.getElementById('Dcont');
-                    DCONT.innerText=result.itemD;
-
-                    var Titem=document.getElementById('TrueItem');
-                    Titem.innerText=result.showanswer;
-
-				}else{
-                    console.log("没有题目");
-				}
-
-                },
-
-            error:function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log(XMLHttpRequest.status);
-                console.log(XMLHttpRequest.readyState);
-                console.log		(textStatus);
-            }
-        });
-
-	}
-    //执行一次函数
-    ShowQuestion();
-
-    function SubmitComment() {
+    function SubmitComment(questionid) {
         //TODO:获取用户评论内容
-        var commenttext=document.getElementById("CommentText");
-        var questionID=document.getElementById("Numq").innerHTML;
+		var comdivid="CommentText"+questionid.toString();
+        var commenttext=document.getElementById(comdivid);
+        var questionID=questionid;
         var sessname=$.cookie('username');
         var objUsername=document.getElementById("commentObjUsername").innerHTML;
         console.log('pinglun:'+commenttext.value);
@@ -239,9 +132,8 @@
             data:{act:'SubmitComment',CommentContent:commenttext.value,
 				QuestionID:questionID,SessName:sessname,ObjUsername:objUsername},
             success:function (result) {
-                console.log("返回:"+result);
                 if(result===1) {
-                    console.log("提交成功");
+                    console.log("提交评论成功");
                 }
             },
             error:function (result) {
@@ -258,27 +150,22 @@
             dataType:'json',
             data:{act:'showcomment',Questionid:questionID},
             success:function (result) {
-                if(result.data==1){
+                if(result.data===1){
                     //console.log(result.allcomment);
                     //console.log(result.zandata);
                     var commentArray=result.allcomment;
                     var zanArray=result.zandata;
                     //遍历数组的每一行，一行是一条评论
                     for(i in commentArray){
+
                         //点后面是数据库的列名
-                        PutComment(commentArray[i].id,commentArray[i].UserName,commentArray[i].ObjUserName,commentArray[i].CommentContent,commentArray[i].CommentTime,commentArray[i].TotalLike,zanArray[i]);
-					}
+                        PutComment(commentArray[i].id,commentArray[i].UserName,commentArray[i].ObjUserName,commentArray[i].CommentContent,commentArray[i].CommentTime,commentArray[i].TotalLike,zanArray[i],questionID);
+                    }
 
-
-                    /*
-                    //取到数据放到网页上
-					//取数据
-					var conUsername=result.username;
-					var conComment=result.comment;
-					//被评论和时间没取
-                    PutComment(conUsername,'',conComment,'');
-					*/
-                }else{
+                    setting();
+                    console.log('取评论:'+questionID+'成功');
+                }else
+                    {
                     console.log("没有评论");
                 }
 
@@ -291,31 +178,35 @@
     }
     //执行一次函数
     //ShowComment();
-    function PutComment(id,userName,objUserName,comContent,comTime,totalLike,likeState){
+    function PutComment(id,userName,objUserName,comContent,comTime,totalLike,likeState,timuid){
         //console.log(likeState);
+		//找到问题对应的评论区
+		var idname='contentqid'+timuid;
+		var thiscontent=document.getElementById(idname);
         //要append的元素
-        var commentList = document.getElementById('mycommentbox');
+        var commentList = thiscontent.getElementsByClassName('comment-list')[0];
+        //var commentList = thiscontent.getElementById('mycommentbox');
         //生成一个div元素
         var commentBox = document.createElement('div');
         commentBox.className = 'comment-box clearfix';
         //commentBox.setAttribute('user', 'self');
 
-		var myHTML='<div class="comment-content">'+'<span class="commentid" style="display: none">'+id+'</span>'+
-        	'<p class="comment-text"><span class="user" id="UserName" >'+userName+'：</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
+        var myHTML='<div class="comment-content">'+'<span class="commentid" style="display: none">'+id+'</span>'+
+            '<p class="comment-text"><span class="user" id="UserName" >'+userName+'：</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
             '<div class="comment-time">' +comTime +
             '<div class="comment-op">';
-		if(likeState==1){
+        if(likeState==1){
             myHTML+= '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">取消赞</a>' ;
-       }else{
+        }else{
             myHTML+= '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' ;
         }
 
         myHTML+=
             '<a href="javascript:" class="comment-operate" style="margin-right:10px">回复</a>';
-		//判断是不是本人评论，是本人就显示删除
-		if(userName==$.cookie('username')){
+        //判断是不是本人评论，是本人就显示删除
+        if(userName==$.cookie('username')){
             myHTML+='<a href="javascript:" class="comment-operate" style="margin-right:10px">删除</a>';
-		}
+        }
         myHTML+=
             '</div>'+
             '<div class="praises-total"  style="display:block;">'+'共有<span id="praisetotal">'+totalLike+'</span>人觉得很赞'+
@@ -323,51 +214,118 @@
             '</div>'+
             '</p>' +
             '</div>';
-		commentBox.innerHTML =myHTML;
-
-		//判断这条评论是不是本人的，如果不是就不添加删除按钮
-		// if(userName==$.cookie('username')){
-         //    commentBox.innerHTML =
-         //        '<div class="comment-content">' +
-         //        //'<p class="comment-text"><span class="user" >我：</span>' + textarea.value + '</p>' +
-         //        '<p class="comment-text"><span class="user" id="UserName" >'+userName+'：</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
-         //        '<div class="comment-time">' +comTime +
-         //        '<div class="comment-op">'+
-         //        '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' +
-         //        '<a href="javascript:" class="comment-operate" style="margin-right:10px">回复</a>' +
-         //        '<a href="javascript:" class="comment-operate" style="margin-right:10px">删除</a>'+
-         //        '</div>'+
-         //        '<div class="praises-total"  style="display:block;">'+'共有<span id="praisetotal">人觉得很赞</span>'+
-         //        '</div>'+
-         //        '</div>'+
-         //        '</p>' +
-         //        '</div>';
-		// }
-		// else{
-         //    commentBox.innerHTML =
-         //        '<div class="comment-content">' +
-         //        //'<p class="comment-text"><span class="user" >我：</span>' + textarea.value + '</p>' +
-         //        '<p class="comment-text"><span class="user" id="UserName" >'+userName+'：</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
-         //        '<div class="comment-time">' +comTime +
-         //        '<div class="comment-op">'+
-         //        '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">赞</a>' +
-         //        '<a href="javascript:" class="comment-operate" style="margin-right:10px">回复</a>' +
-         //        //'<a href="javascript:" class="comment-operate" style="margin-right:10px">删除</a>'+
-         //        '</div>'+
-         //        '<div class="praises-total"  style="display:block;">'+'共有<span id="praisetotal">人觉得很赞</span>'+
-         //        '</div>'+
-         //        '</div>'+
-         //        '</p>' +
-         //        '</div>';
-		// }
+        commentBox.innerHTML =myHTML;
 
         //此处是将commentBox添加到commentlist里面
         commentList.appendChild(commentBox);//appendChild() 方法向节点添加最后一个子节点。
 
 
-	}
+    }
+
+   //生成问题区
+    function PutQuestion(questionid,questionnum,question,itemA,itemB,itemC,itemD,showanswer){
+        var quescomList = document.getElementById('QandDList');
+        var quescomBox = document.createElement('div');
+        quescomBox.className = 'quescom-box';
+		var idname='contentqid'+questionid.toString();
+        var myHTML=
+            //加题目区的div
+            '<div id="ShowQuestionList" class="question-content" style="border:3px;text-align: center;margin-top: 70px;font-size:20px;line-height: 50px;">'+
+            '<div  style="display: none" >题目ID：<span id="questionid">'+questionid+'</span></div>'+
+            '<div style="text-align:left;margin-left: 30px;margin-bottom: 10px;font-weight: bold">'+
+            '第<span class="Numq" id="Numq" style="margin-left: 10px;margin-right: 10px">'+questionnum+'</span>题：'+
+            '<span class="quescont" id="quescont">'+question+'</span>'+
+            '</div>'+
+            '<div>'+
+            '<label style="text-align:left;margin-left: 30px;display: block">'+
+            '<input type="radio"  id="A-radio" name="item" value="A">A:<span class="Acont" id="Acont">'+itemA+'</span>'+
+            '</label>'+
+            '<label style="text-align:left;margin-left: 30px;display: block">'+
+            '<input type="radio" id="B-radio"  name="item" value="B">B:<span class="Bcont" id="Bcont">'+itemB+'</span>'+
+            '</label>'+
+            '<label style="text-align:left;margin-left: 30px;display: block">'+
+            '<input type="radio" id="C-radio" name="item" value="C">C:<span class="Ccont" id="Ccont">'+itemC+'</span>'+
+            '</label>'+
+            '<label style="text-align:left;margin-left: 30px;display: block">'+
+            '<input type="radio" id="D-radio" name="item" value="D">D:<span class="Dcont" id="Dcont" >'+itemD+'</span>'+
+            '</label>'+
+            '<div id="Ransdiv" style="display: none">'+
+            '正确答案：<span id="TrueItem" >'+showanswer+'</span>'+
+            '</div>'+
+            '</div>'+
+            '<div  class="anscheck" id="check" style="display: none"></div>'+
+            '<label>'+
+            '<input class="btn" type="button" value="提交答案" onclick="SubmitAnswer()" style="background-color: darksalmon;width: 100px;font-size: medium;font-weight: bold"/>'+
+            '</label>'+
+            '<label>'+
+            '<input type="button" class="btn" id="TrueAnswer" value="查看答案" onclick="ShowAnswer()" style="background-color:cadetblue;width: 100px;font-size: medium;font-weight: bold;">'+
+            '</label>'+
+            '</div>'+
+	//加评论区的div
+            '<div class="demo" style="width:100%;padding: 20px 0;margin-top: 50px">'+
+            '<div class="discuss" >讨论区</div>'+
+            '<div class="container">'+
+            '<div class="row">'+
+            '<div class="col-md-12">'+
+            '<div id="list">'+
+            '<div class="box clearfix">'+
+            '<div class="content" id='+idname+'>'+
+            '<span id="commentObjUsername" style="display: none;"></span>'+
+            '<div class="comment-list" id="mycommentbox">'+
+            '<div class="huifu-list" id="huifu-list"></div>'+
+            '</div>'+
+            '<div class="text-box">'+
+            '<textarea class="comment" id="CommentText'+questionid+'"  autocomplete="off">我要提问…</textarea>'+
+            '<button class="btn" onclick="SubmitComment('+questionid+')">发送</button>'+
+            '<span class="word"><span class="length">0</span>/140</span>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>';
+        quescomBox.innerHTML =myHTML;
+        quescomList.appendChild(quescomBox);//appendChild() 方法向节点添加最后一个子节点。
 
 
+    }
+
+    function ShowQuestion(){
+        //取数据显示在页面
+        $.ajax({
+            url:'Manager/QuestionManager.php',
+            type:'POST',
+            dataType:'json',
+            data:{act:'showquestion'},
+            success:function (result) {
+                if(result.data==1){
+                    var questionArray=result.allquestion;
+                    //遍历数组的每一行，一行是一条评论
+                    for(i in questionArray){
+                        //点后面是数据库的列名
+                        PutQuestion(questionArray[i].ID,questionArray[i].QuestionNum,questionArray[i].quescontent,questionArray[i].Aitem,
+							questionArray[i].Bitem,questionArray[i].Citem,questionArray[i].Ditem,questionArray[i].TrueAns);
+                        ShowComment(questionArray[i].ID);
+
+                    }
+
+                    //ShowComment(result.questionnum);
+
+                }else{
+                    console.log("没有题目");
+                }
+
+            },
+
+            error:function (result) {
+                console.log(result);
+            }
+        });
+
+    }
+    ShowQuestion();
 
 </script>
 </body>

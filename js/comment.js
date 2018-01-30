@@ -3,10 +3,98 @@
  */
 
 window.onload = function () {
-    var list = document.getElementById('list');
-    var boxs = list.children;
-    var timer;
-  
+    setting();
+}
+
+    function setting() {
+
+        var list = document.getElementById('QandDList');
+        var boxs = list.children;
+        var timer;
+
+        //把事件代理到每条分享div容器
+        for (var i = 0; i < boxs.length; i++) {
+
+            //点击
+            boxs[i].onclick = function (e) {
+                e = e || window.event;//为了兼容各种浏览器
+                var el = e.srcElement;//将触发事件的对象赋给el
+                switch (el.className) {
+
+                    // case'huifu-operate':
+                    //  HuiFu(el.parentNode.parentNode, el);
+                    //  break;
+
+                    //赞分享
+                    case 'praise':
+                        praiseBox(el.parentNode.parentNode.parentNode, el);
+                        break;
+
+                    //发送按钮蓝
+                    case 'btn':
+                        question(el.parentNode.parentNode.parentNode, el);
+                        //el.parentNode.parentNode.parentNode，获取box clearfix的div容器。
+                        break;
+
+                    //发送按钮灰
+                    case 'btn btn-off':
+                        clearTimeout(timer);//按钮为灰时，清除定时器，即点击灰色按钮，输入框不会缩小
+                        break;
+
+                    //赞留言
+                    case 'comment-praise':
+                        praiseBox(el.parentNode.parentNode.parentNode, el);
+                        break;
+
+                    //操作留言
+                    case 'comment-operate':
+                        operate(el);
+                        break;
+                }
+            };
+
+            //评论
+            var textArea = boxs[i].getElementsByClassName('comment')[0];//给每个div容器设置输入框
+
+            //评论获取焦点
+            textArea.onfocus = function () {
+                this.parentNode.className = 'text-box text-box-on';//通过改变classname,改变输入框的样式
+                this.value = this.value == '我要提问…' ? '' : this.value;//如果输入框内文字是我要提问…，那就将内容设为空，否则保持原来的值不变
+                this.onkeyup();
+            };
+
+            //评论失去焦点
+            textArea.onblur = function () {
+                var me = this;
+                var val = me.value;
+                if (val == '') {
+                    timer = setTimeout(function () {
+                        //加入定时器
+                        me.value = '我要提问…';
+                        me.parentNode.className = 'text-box';
+                    }, 200);//设置失去焦点的200毫秒以后，调用function()函数
+                }
+            };
+
+            //功能：统计数字
+            textArea.onkeyup = function () {
+                var val = this.value;
+                var len = val.length;
+                var els = this.parentNode.children;//即textbox下的所有子节点
+                var btn = els[1];//button是第二个子节点
+                var word = els[2];//word是第三个子节点
+                if (len <=0 || len > 140) { //字数小于0或者大于140时，按钮为灰
+                    btn.className = 'btn btn-off';
+                }
+                else {
+                    btn.className = 'btn';
+                }
+                word.innerHTML = len + '/140';
+            }
+
+        }
+    }
+
     //格式化日期
     function formateDate(date) {
         var y = date.getFullYear();
@@ -18,7 +106,6 @@ window.onload = function () {
         m = m > 9 ? m : '0' + m;
         return y + '-' + m + '-' + d + ' ' + h + ':' + mi;
     }
-    
 
     //删除节点
     function removeNode(node) {
@@ -198,86 +285,4 @@ window.onload = function () {
         }
 
 
-    //把事件代理到每条分享div容器
-    for (var i = 0; i < boxs.length; i++) {
-
-        //点击
-        boxs[i].onclick = function (e) {
-            e = e || window.event;//为了兼容各种浏览器
-            var el = e.srcElement;//将触发事件的对象赋给el
-            switch (el.className) {
-
-               // case'huifu-operate':
-                  //  HuiFu(el.parentNode.parentNode, el);
-                  //  break;
-
-                //赞分享
-                case 'praise':
-                    praiseBox(el.parentNode.parentNode.parentNode, el);
-                    break;
-
-                //发送按钮蓝
-                case 'btn':
-                    question(el.parentNode.parentNode.parentNode, el);
-                    //el.parentNode.parentNode.parentNode，获取box clearfix的div容器。
-                    break;
-
-                //发送按钮灰
-                case 'btn btn-off':
-                    clearTimeout(timer);//按钮为灰时，清除定时器，即点击灰色按钮，输入框不会缩小
-                    break;
-
-                //赞留言
-                case 'comment-praise':
-                    praiseBox(el.parentNode.parentNode.parentNode, el);
-                    break;
-
-                //操作留言
-                case 'comment-operate':
-                    operate(el);
-                    break;
-            }
-        };
-
-        //评论
-        var textArea = boxs[i].getElementsByClassName('comment')[0];//给每个div容器设置输入框
-
-        //评论获取焦点
-        textArea.onfocus = function () {
-            this.parentNode.className = 'text-box text-box-on';//通过改变classname,改变输入框的样式
-            this.value = this.value == '我要提问…' ? '' : this.value;//如果输入框内文字是我要提问…，那就将内容设为空，否则保持原来的值不变
-            this.onkeyup();
-        };
-
-        //评论失去焦点
-        textArea.onblur = function () {
-            var me = this;
-            var val = me.value;
-            if (val == '') {
-                timer = setTimeout(function () {
-                	//加入定时器
-                    me.value = '我要提问…';
-                    me.parentNode.className = 'text-box';
-                }, 200);//设置失去焦点的200毫秒以后，调用function()函数
-            }
-        };
-
-        //功能：统计数字
-        textArea.onkeyup = function () {
-            var val = this.value;
-            var len = val.length;
-            var els = this.parentNode.children;//即textbox下的所有子节点
-            var btn = els[1];//button是第二个子节点
-            var word = els[2];//word是第三个子节点
-            if (len <=0 || len > 140) { //字数小于0或者大于140时，按钮为灰
-                btn.className = 'btn btn-off';
-            }
-            else {
-                btn.className = 'btn';
-            }
-            word.innerHTML = len + '/140';
-        }
-
-    }
-};
 

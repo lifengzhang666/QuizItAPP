@@ -60,9 +60,7 @@ switch ($action){
     case 'showquestion1':
         ShowQuestion1();
         break;
-    case 'showcomment1':
-        ShowComment1();
-        break;
+
 
 
 }
@@ -257,31 +255,20 @@ function ShowQuestion(){
     $sql="select * from qctable WHERE SetTime='$time'";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
-    //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
-    $resultdata=$res->fetch(PDO::FETCH_ASSOC);
-    //如果有数据
-    if($resultdata){
-        //中括号里是数据库列名
-        $questionNum=$resultdata['ID'];
-        $question=$resultdata['quescontent'];
-        $selectA=$resultdata['Aitem'];
-        $selectB=$resultdata['Bitem'];
-        $selectC=$resultdata['Citem'];
-        $selectD=$resultdata['Ditem'];
-        $Settime=$resultdata['SetTime'];
-        $Showans=$resultdata['TrueAns'];
-        //创建数组
-        //成功时data为1
-        $data = array('data'=> 1,'questionnum'=>$questionNum,'question'=>$question,'itemA' => $selectA,
-            'itemB' => $selectB,'itemC' => $selectC,'itemD' => $selectD,'Settime'=>$Settime,'showanswer'=>$Showans);
-        //变成json格式，返回
-        echo json_encode($data);
-        return;
-    }else{
-        $data = array('data'=> 0);
+    $resultalldata=$res->fetchAll(PDO::FETCH_ASSOC);
+
+    if($resultalldata){
+        $data = array('data'=> 1,'allquestion'=>$resultalldata);
         echo json_encode($data);
         return;
     }
+    else{
+        $data = array('data'=> 0);
+        json_encode($data);
+        return;
+    }
+
+
 }
 
 function SubmitComment(){
@@ -359,7 +346,7 @@ function ShowComment(){
     }
     else{
         $data = array('data'=> 0);
-        json_encode($data);
+        echo json_encode($data);
         return;
         }
 }
@@ -371,7 +358,7 @@ function ShowReview(){
     $sql="select * from qctable";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
-    //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
+    //遍历每一行
     $resultalldata=$res->fetchAll(PDO::FETCH_ASSOC);
 
     if($resultalldata){
