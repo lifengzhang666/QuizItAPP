@@ -4,7 +4,7 @@
 
 window.onload = function () {
     setting();
-}
+};
 
     function setting() {
 
@@ -50,6 +50,10 @@ window.onload = function () {
                     case 'comment-operate':
                         operate(el);
                         break;
+
+                    case'fa  fa-angle-double-down':
+                    expandIt();
+                    break;
                 }
             };
 
@@ -283,6 +287,22 @@ window.onload = function () {
 
         }
         }
+
+    function expandIt(questionid) {
+        var content=document.getElementById('contentqid'+questionid);
+    whichEl =content.parentNode.parentNode;
+    console.log(whichEl);
+    if (whichEl.style.display =='block') {
+        whichEl.style.display ='none';
+    }
+    else {
+        whichEl.style.display='block';
+    }
+}
+
+
+
+
 
 
 

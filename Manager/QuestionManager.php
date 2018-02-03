@@ -312,9 +312,26 @@ function ShowComment(){
         echo json_encode('没有传入Questionid或为空');
         return;
     }
+    if(!isset($_REQUEST["userid"]) || empty($_REQUEST["userid"])){
+        echo json_encode('没有传入userid或为空');
+        return;
+    }
+
     $QID=$_REQUEST["Questionid"];
+    $Username=$_REQUEST["userid"];
 
     $pdo =ConnectMysql();
+
+    $sqlaa="select * from commenttable WHERE QuestionID='$QID' AND  UserName='$Username'";
+    $resaa=$pdo->query($sqlaa);
+    $resultaa=$resaa->fetch(PDO::FETCH_ASSOC);
+    if(!$resultaa){
+        //这个人没评论
+        $data = array('data'=> 3);
+        echo json_encode($data);
+        return;
+    }
+
     $sql="select * from commenttable WHERE QuestionID='$QID'";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
