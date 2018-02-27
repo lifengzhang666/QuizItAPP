@@ -61,8 +61,9 @@ switch ($action){
         ShowQuestion1();
         break;
 
-
-
+    case 'showquestion2':
+        ShowQuestion2();
+        break;
 }
 return;
 //注册
@@ -165,13 +166,28 @@ function SubmitAnswer()
         echo json_encode('没有传入answer或为空');
         return;
     }
+    if (!isset($_REQUEST["username"]) || empty($_REQUEST["username"])) {
+        echo json_encode('没有传入username或为空');
+        return;
+    }
+    if (!isset($_REQUEST["questionid"]) || empty($_REQUEST["questionid"])) {
+        echo json_encode('没有传入questionid或为空');
+        return;
+    }
+    if (!isset($_REQUEST["time"]) || empty($_REQUEST["time"])) {
+        echo json_encode('没有传入time或为空');
+        return;
+    }
 
 
     //获取参数
     $answer = $_REQUEST["answer"];
+    $time=$_REQUEST["time"];
+    $username=$_REQUEST["username"];
+    $questionid=$_REQUEST["questionid"];
 
     $pdo = ConnectMysql();
-        $insertsql = "INSERT INTO `questiontable` (`answer`) VALUES ('$answer')";
+        $insertsql = "INSERT INTO `studentdata` (`answer`,`jieshuzuotiTIME`,`UserName`,`QuestionID`) VALUES ('$answer','$time','$username','$questionid')";
         //exec执行SQL语句增删改查，返回影响行数
         $execres = $pdo->exec($insertsql);
         if ($execres) {
@@ -251,7 +267,32 @@ function ShowQuestion(){
     $pdo =ConnectMysql();
     $time=date("Ymd",time());
     //不确定内容
-
+    $username=$_REQUEST["username"];
+    $sqlusergroup="select * from mytable WHERE username='$username'";
+    $resusergroup=$pdo->query($sqlusergroup);
+    $group=$resusergroup->fetch(PDO::FETCH_ASSOC);
+    if($group['group']==1){
+        //每周四一起显示
+        //$da 一~日 ： 1234560
+        $da = date("w");
+        if($da >= 4 || $da==0){
+            //星期四~星期日
+            //获取本周四日期,日期小于此日期可以显示
+            //本周1
+            $thursday=date('Ymd',strtotime("-1 thursday"));
+            //$thursday2=date('Ymd',strtotime("-2 thursday"));
+        }
+        else{
+            //获取上周四
+            $thursday=date('Ymd',strtotime('-2 thursday', time()));
+        }
+        if($time>$thursday){
+            //日期未到
+            $data = array('data'=> 5,);
+            echo json_encode($data);
+            return;
+        }
+    }
     $sql="select * from qctable WHERE SetTime='$time'";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
@@ -322,6 +363,7 @@ function ShowComment(){
 
     $pdo =ConnectMysql();
 
+    //判断本人有没有评论，没有评论则不显示评论
     $sqlaa="select * from commenttable WHERE QuestionID='$QID' AND  UserName='$Username'";
     $resaa=$pdo->query($sqlaa);
     $resultaa=$resaa->fetch(PDO::FETCH_ASSOC);
@@ -332,6 +374,7 @@ function ShowComment(){
         return;
     }
 
+    //获取本题目的全部评论
     $sql="select * from commenttable WHERE QuestionID='$QID'";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
@@ -344,7 +387,8 @@ function ShowComment(){
     foreach ($resultalldata as $row){
         $comid=$row['id'];
         $comuser=$row['UserName'];
-        $sql="select * from liketable WHERE CommentID='$comid' And LikeUser='$comuser'";
+        //判断这条评论，本人有没有点赞
+        $sql="select * from liketable WHERE CommentID='$comid' And LikeUser='$Username'";
         //query查询SQL语句，返回PDOstatement对象
         $res=$pdo->query($sql);
         $resultdata=$res->fetch(PDO::FETCH_ASSOC);
@@ -371,15 +415,21 @@ function ShowComment(){
 //显示复习题
 function ShowReview(){
     //数据库相关
+    if(!isset($_REQUEST["username"]) || empty($_REQUEST["username"])){
+        echo json_encode('没有传入username或为空');
+        return;
+    }
+    $username=$_REQUEST["username"];
     $pdo =ConnectMysql();
-    $sql="select * from qctable";
+    //$sql="select * from qctable";
+    $sql="SELECT qctable.quescontent,qctable.ID FROM qctable WHERE qctable.ID in (select QuestionID from studentdata where UserName='$username')";
     //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
     //遍历每一行
     $resultalldata=$res->fetchAll(PDO::FETCH_ASSOC);
-
     if($resultalldata){
         $data = array('data'=> 1,'allreview'=>$resultalldata);
+
         echo json_encode($data);
         return;
     }
@@ -478,37 +528,71 @@ function ShowQuestion1(){
     //$time=date("Ymd",time());
     //不确定内容
     $choosedate=$_REQUEST["choosedate"];
+    $username=$_REQUEST["username"];
+    $sqlusergroup="select * from mytable WHERE username='$username'";
+    $resusergroup=$pdo->query($sqlusergroup);
+    $group=$resusergroup->fetch(PDO::FETCH_ASSOC);
+    if($group['group']==1){
+        //每周四一起显示
+        //$da 一~日 ： 1234560
+        $da = date("w");
+        if($da >= 4 || $da==0){
+            //星期四~星期日
+            //获取本周四日期,日期小于此日期可以显示
+            //本周1
+            $thursday=date('Ymd',strtotime("-1 thursday"));
+            //$thursday2=date('Ymd',strtotime("-2 thursday"));
+        }
+        else{
+            //获取上周四
+            $thursday=date('Ymd',strtotime('-2 thursday', time()));
+        }
+        if($choosedate>$thursday){
+            //日期未到
+            $data = array('data'=> 5,);
+            echo json_encode($data);
+            return;
+        }
+    }
+
     $sql="select * from qctable WHERE SetTime='$choosedate'";
-    //query查询SQL语句，返回PDOstatement对象
     $res=$pdo->query($sql);
-    //取返回结果的第一行数据，istoday应该只有1个为1，有多个也只第一个有效,没取到就是false
-    $resultdata=$res->fetch(PDO::FETCH_ASSOC);
-    //如果有数据
-    if($resultdata){
-        //中括号里是数据库列名
-        $questionNum=$resultdata['ID'];
-        $question=$resultdata['quescontent'];
-        $selectA=$resultdata['Aitem'];
-        $selectB=$resultdata['Bitem'];
-        $selectC=$resultdata['Citem'];
-        $selectD=$resultdata['Ditem'];
-        $Settime=$resultdata['SetTime'];
-        $Showans=$resultdata['TrueAns'];
-        //创建数组
-        //成功时data为1
-        $data = array('data'=> 1,'questionnum'=>$questionNum,'question'=>$question,'itemA' => $selectA,
-            'itemB' => $selectB,'itemC' => $selectC,'itemD' => $selectD,'Settime'=>$Settime,'showanswer'=>$Showans);
-        //变成json格式，返回
+    $resultalldata=$res->fetchAll(PDO::FETCH_ASSOC);
+
+    if($resultalldata){
+        $data = array('data'=> 1,'allquestion'=>$resultalldata);
         echo json_encode($data);
         return;
-    }else{
+    }
+    else{
         $data = array('data'=> 0);
         echo json_encode($data);
         return;
     }
 }
 
+function ShowQuestion2(){
 
+    //数据库相关
+    $pdo =ConnectMysql();
+    //$time=date("Ymd",time());
+    //不确定内容
+    $QUESTIONID=$_REQUEST["questionid"];
+    $sql="select * from qctable WHERE ID='$QUESTIONID'";
+    $res=$pdo->query($sql);
+    $resultalldata=$res->fetchAll(PDO::FETCH_ASSOC);
+
+    if($resultalldata){
+        $data = array('data'=> 1,'allquestion'=>$resultalldata);
+        echo json_encode($data);
+        return;
+    }
+    else{
+        $data = array('data'=> 0);
+        json_encode($data);
+        return;
+    }
+}
 
 function UnLikeComment(){
     if(!isset($_REQUEST["username"]) || empty($_REQUEST["username"])){

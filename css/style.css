@@ -10,8 +10,8 @@ a {
 }
 
 nav {
-  background:#CCCCCC;
-  box-shadow: 0px 1px 5px #5c4b51;
+  background:#d9edf7;
+  box-shadow: 0px 1px 5px #b7cabc;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -25,7 +25,7 @@ nav {
   width: 100%;
 }
 
-}
+
 nav a, #sideMenu {
   margin: 0 10px 0 0;
   text-shadow: 1px 1px 2px #FFFFFF;
@@ -64,13 +64,13 @@ ul#userMenu li a::after {
   z-index: 5;
 }
 #sideMenuContainer {
-  background:#000000;
-  height: 100%;
+  background:#60a8b9;
+
   padding: 10px;
   position: fixed;
   top: 56px;
   right: -200px;
-  width: 200px;
+
   z-index: 4;
 }
 
@@ -82,4 +82,8 @@ ul#userMenu li a::after {
   content: attr(title);
   font: 12px 'PT Sans', Helvetica, Arial, sans-serif;
   padding-left: 10px;
+}
+.itemclass:after{
+  color:#00b4ef;
+
 }

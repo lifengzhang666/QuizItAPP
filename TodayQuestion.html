@@ -23,16 +23,13 @@
 <!--下面这段代码是导航条的代码-->
 <div class="daohangtiao" style="position:absolute;z-index:6;">
 	<nav>
-		<a href="#" style="color: #3D3D3D;font-size: 16px;">
-			<span class="fa fa-arrow-left"></span>
+		<a href="javascript:history.back(-1)" style="color: #3D3D3D;font-size: 16px;">
+			<span class="fa fa-arrow-left" ></span>
 			返回
 		</a>
 
 
-		<div id="showsequence">
-			<!--<input type="button" value="第一题" onclick="showfirst()">-->
-			<!--<input type="button" value="第二题" onclick="showsecond()">-->
-			<!--<input type="button" value="第三题" onclick="showthird()">-->
+		<div id="showsequence" style="margin-right: 30px;">
 		</div>
 		<div id="sideMenu">
 			<span class="fa fa-navicon" id="sideMenuClosed"></span>
@@ -56,7 +53,7 @@
 </script>
 
 <!--下面这段代码是题目显示区的代码-->
-<div id="QandDList" class="question-content" style="border:3px;text-align: center;margin-top: 70px;font-size:20px;line-height: 50px;">
+<div id="QandDList" class="question-content" style=" border:3px;text-align: center;margin-top: 60px;font-size:20px">
 </div>
 
 <script>
@@ -64,63 +61,82 @@
     function ShowAnswer(questionnum) {
         var ta=document.getElementById('Ransdiv'+questionnum);
         var butcont=document.getElementById('TrueAnswer'+questionnum);
+        var box=document.getElementById('quescom-box'+questionnum);
+        var checkans=box.getElementsByClassName('anscheck')[0];
+        console.log("123123");
            if(butcont.value=="查看答案"){
                butcont.value="隐藏答案";
                ta.style.display="block";
+               checkans.style.display="none";
 		   }else{
             butcont.value="查看答案";
             ta.style.display="none";
+
         }
     }
 
-    function SubmitAnswer(questionnum) {
+    function SubmitAnswer(questionnum,id) {
         //TODO:获取用户选择答案
-		console.log('quescom-box'+questionnum);
+        var sessname=$.cookie('username');
+        //console.log(id);
+        var time=new Date();
+		var y=time.getFullYear();
+        var m = time.getMonth() + 1;
+        var d = time.getDate();
+        var h = time.getHours();
+        var mi = time.getMinutes();
+        var s=time.getSeconds();
+        mi = mi > 9 ? mi : '0' + mi;
+        m = m > 9 ? m : '0' + m;
+        var time1=y + '-' + m + '-' + d + ' ' + h + ':' + mi+':'+s;
+        //console.log(time1);
+		//console.log('quescom-box'+questionnum);
 		var box=document.getElementById('quescom-box'+questionnum);
-		//console.log(box.getElementsByClassName('anscheck'));
-
-        //此处 user 是 id 为 inputUsername 的 html 元素
-        // var item = box.getElementsByName('item');
         var item = box.getElementsByClassName('itemclass');
+        var Ranswer=$("#quescom-box"+questionnum).find('img').attr('class');
+        //隐藏答案
+        $("#quescom-box"+questionnum).find('.TrueItemclass').css('display','none');
 
-        // var Ranswer = box.getElementById("TrueItem").innerHTML;
-        var Ranswer = box.getElementsByClassName('TrueItemclass')[0].innerHTML;
+
         for (i = 0; i < item.length; i++) {
             if (item[i].checked) {
                 var answer = item[i].value;
                 // var checkans=box.getElementById("check");
                 var checkans=box.getElementsByClassName('anscheck')[0];
+                //console.log('asdasd');
+                console.log(answer);
+                console.log(Ranswer);
                    if (answer ===Ranswer ) {
-                    checkans.innerHTML="回答正确";
+                    checkans.innerHTML="<img src='img/correct.png'/>";
                     checkans.style.display="block";
-                    break;
+
                       } else {
-                       checkans.innerHTML="回答错误";
+                       checkans.innerHTML="<img src='img/error.png'/>";
                        checkans.style.display="block";
-                    break;
+
                 }
             }
         }
 
-    console.log("开始ajax");
+    //console.log("开始ajax");
     //TODO：向数据库写入数据
     //data的第一个数据固定为act,在DataManager.php根据act选择要执行的函数
     $.ajax({
-        url:'Manager/DataManager.php',
+        url:'Manager/QuestionManager.php',
         type:'POST',
         dataType:'json',
-        data:{act:'SetAnswer',answer:answer},
+        data:{act:'SetAnswer',answer:answer,time:time1,username:sessname,questionid:id},
         success:function (result) {
-            console.log("返回:"+result);
+            //console.log("返回:"+result);
             if(result===1) {
-                console.log("提交成功");
+                //console.log("提交成功");
             }
         },
         error:function (result) {
             console.log(result);
         }
     });
-    console.log("结束ajax");
+    //console.log("结束ajax");
     }
 
     function SubmitComment(questionid) {
@@ -171,6 +187,7 @@
                     //console.log(result.zandata);
                     var commentArray=result.allcomment;
                     var zanArray=result.zandata;
+                    console.log(zanArray);
                     //遍历数组的每一行，一行是一条评论
                     for(i in commentArray){
 
@@ -211,6 +228,7 @@
             '<p class="comment-text"><span class="user" id="UserName" >'+userName+'</span>' + '<span id="commmentCONT">'+comContent+'</span>' + '</p>' +
             '<div class="comment-time">' +comTime +
             '<div class="comment-op">';
+        console.log(likeState);
         if(likeState==1){
             myHTML+= '<a href="javascript:" class="comment-praise"  style="margin-right:10px" total="0" my="0" style="">取消赞</a>' ;
         }else{
@@ -248,39 +266,39 @@
 		var idname='contentqid'+questionid.toString();
         var myHTML=
             //加题目区的div
-            '<div id="ShowQuestionList" class="question-content" >'+
-            '<div  style="display: none" >题目ID：<span id="questionid">'+questionid+'</span></div>'+
-            '<div style="text-align:left;margin-left: 30px;margin-bottom: 10px;font-weight: bold">'+
-            '第<span class="Numq" id="Numq" style="margin-left: 10px;margin-right: 10px">'+questionnum+'</span>题：'+
+            '<div id="ShowQuestionList" class="question-content" style="line-height: 30px" >'+
+            // '<div >题目ID：<span id="questionid'+questionid+'">'+questionid+'</span></div>'+
+            '<div style="text-align:left;margin-left: 30px;margin-bottom: 10px;font-family:Microsoft YaHei;letter-spacing: 2px ">'+
+            '第<span class="Numq" id="Numq" style=" margin-left: 5px;margin-right:5px">'+questionnum+'</span>题：'+
             '<span class="quescont" id="quescont">'+question+'</span>'+
             '</div>'+
             '<div>'+
-            '<label style="text-align:left;margin-left: 30px;display: block">'+
-            '<input type="radio" class="itemclass" id="A-radio" name="item" value="A">A:<span class="Acont" id="Acont">'+itemA+'</span>'+
+            '<label style="text-align:left;margin-left: 30px;display: block;font-weight: normal;font-family:Microsoft YaHei;letter-spacing: 2px ">'+
+            '<input type="radio" class="itemclass" id="A-radio" name="item" value="A" style="margin-right: 10px" >A:<span class="Acont" id="Acont">'+itemA+'</span>'+
             '</label>'+
-            '<label style="text-align:left;margin-left: 30px;display: block">'+
-            '<input type="radio" class="itemclass" id="B-radio"  name="item" value="B">B:<span class="Bcont" id="Bcont">'+itemB+'</span>'+
+            '<label style="text-align:left;margin-left: 30px;display: block;font-weight: normal;font-family:Microsoft YaHei;letter-spacing: 2px ">'+
+            '<input type="radio" class="itemclass" id="B-radio"  name="item" value="B" style="margin-right: 10px" >B:<span class="Bcont" id="Bcont">'+itemB+'</span>'+
             '</label>'+
-            '<label style="text-align:left;margin-left: 30px;display: block">'+
-            '<input type="radio" class="itemclass" id="C-radio" name="item" value="C">C:<span class="Ccont" id="Ccont">'+itemC+'</span>'+
+            '<label style="text-align:left;margin-left: 30px;display: block;font-weight: normal;font-family:Microsoft YaHei;letter-spacing: 2px ">'+
+            '<input type="radio" class="itemclass" id="C-radio" name="item" value="C" style="margin-right: 10px" >C:<span class="Ccont" id="Ccont">'+itemC+'</span>'+
             '</label>'+
-            '<label style="text-align:left;margin-left: 30px;display: block">'+
-            '<input type="radio" class="itemclass" id="D-radio" name="item" value="D">D:<span class="Dcont" id="Dcont" >'+itemD+'</span>'+
+            '<label style="text-align:left;margin-left: 30px;display: block;font-weight: normal;font-family:Microsoft YaHei;letter-spacing: 2px ">'+
+            '<input type="radio" class="itemclass" id="D-radio" name="item" value="D" style="margin-right: 10px" >D:<span class="Dcont" id="Dcont" >'+itemD+'</span>'+
             '</label>'+
-            '<div id="Ransdiv'+questionnum+'" style="display: none">'+
-            '正确答案：<span class="TrueItemclass" id="TrueItem" >'+showanswer+'</span>'+
+            '<div id="Ransdiv'+questionnum+'" style="display:none" class="TrueItemclass">'+
+            // '正确答案：<span class="TrueItemclass" id="TrueItem" >'+showanswer+'</span>'+
             '</div>'+
             '</div>'+
-            '<div  class="anscheck" id="check" style="display: none"></div>'+
+            '<div  class="anscheck" id="check" style="display:none"></div>'+
             '<label>'+
-            '<input class="btn" type="button" value="提交答案" onclick="SubmitAnswer('+questionnum+')" style="background-color: darksalmon;width: 100px;font-size: medium;font-weight: bold"/>'+
+            '<input class="btn" type="button"  value="提交答案" onclick="SubmitAnswer('+questionnum+','+questionid+')" style="background-color: darksalmon;width: 100px;font-size: medium;font-weight: bold;margin-right: 30px;margin-top: 15px;"/>'+
             '</label>'+
             '<label>'+
-            '<input type="button" class="btn" id="TrueAnswer'+questionnum+'" value="查看答案" onclick="ShowAnswer('+questionnum+')" style="background-color:cadetblue;width: 100px;font-size: medium;font-weight: bold;">'+
+            '<input type="button" class="btn" id="TrueAnswer'+questionnum+'" value="查看答案" onclick="ShowAnswer('+questionnum+')" style="background-color:cadetblue;width: 100px;font-size: medium;font-weight: bold;margin-top: 15px;">'+
             '</label>'+
             '</div>'+
 	//加评论区的div
-            '<div class="demo" style="width:100%;padding: 20px 0;margin-top: 50px">'+
+            '<div class="demo" style="width:100%;padding: 20px 0;margin-top: 10px">'+
             '<div class="discuss" id="discuss">讨论区'+
 			'<span class="fa fa-angle-double-down" onclick="expandIt('+questionid+')"></span>'+
 			'</div>'+
@@ -295,7 +313,7 @@
             '<div class="huifu-list" id="huifu-list"></div>'+
             '</div>'+
             '<div class="text-box">'+
-            '<textarea class="comment" id="CommentText'+questionid+'"  autocomplete="off">我要提问…</textarea>'+
+            '<textarea class="comment" id="CommentText'+questionid+'"  autocomplete="off" style="background-color:#F8F8F8;color: #74777b">我要提问…</textarea>'+
             '<button class="btn" onclick="SubmitComment('+questionid+')">发送</button>'+
             '<span class="word"><span class="length">0</span>/140</span>'+
             '</div>'+
@@ -308,18 +326,26 @@
             '</div>';
         quescomBox.innerHTML =myHTML;
         quescomList.appendChild(quescomBox);//appendChild() 方法向节点添加最后一个子节点。
-
-
-
+		var trueanswer=showanswer;
+        var box=document.getElementById('quescom-box'+questionnum);
+        var trueitem=box.getElementsByClassName('TrueItemclass')[0];
+        var checkans=box.getElementsByClassName('anscheck')[0];
+        trueitem.innerHTML="<img class='"+showanswer+"' src='img/"+showanswer+".png'/>";
     }
 
     function ShowQuestion(){
+        if($.cookie('username')==null){
+            alert('请登录');
+            window.location.href='login.html';
+
+            return;
+        }
         //取数据显示在页面
         $.ajax({
             url:'Manager/QuestionManager.php',
             type:'POST',
             dataType:'json',
-            data:{act:'showquestion'},
+            data:{act:'showquestion',username:$.cookie('username')},
             success:function (result) {
                 if(result.data==1){
                     var questionArray=result.allquestion;
@@ -351,22 +377,23 @@
 
     //生成题目序号
 	function PutSequence(questionnum){
-	    console.log("111");
+	    //console.log("111");
         var SequenceBox = document.createElement('button');
+        SequenceBox.style.backgroundColor='#d9edf7';
         var sequence=document.getElementById('showsequence');
         var MYHTML=
-            '<button id="sequencelist" style="margin: 10px" onclick="showQS('+questionnum+')" >'+'第'+questionnum+'题'+'</button>';
-	    console.log(MYHTML);
+            '<button class="btn" id="sequencelist" style="margin: 10px;background-color:#c2e4e8" onclick="showQS('+questionnum+')" >'+'第'+questionnum+'题'+'</button>';
+	    //console.log(MYHTML);
         SequenceBox.innerHTML=MYHTML;
         sequence.appendChild(SequenceBox);
     }
 
     function showQS(questionnum){
-	    console.log('click');
+	    //console.log('click');
 	    var box=document.getElementsByClassName('quescom-box');
 	    for(i=0;i<box.length;i++){
 	        if(box[i].id=='quescom-box'+questionnum){
-	            console.log('xianshi'+questionnum);
+	            //console.log('xianshi'+questionnum);
                 box[i].style.display='block';
                 continue;
 			}

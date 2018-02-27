@@ -13,6 +13,9 @@ html,body{margin-top:30px;font-size: 62.5%;font-family: "Microsoft YaHei", "SimS
 .date ul li span{display: block;width: 100%;height: 100%;line-height: 4.5rem;text-align: center;}
 .date ul .no_date{background: #fafafa;color: #999;line-height:4.5rem;}
 .date ul .act_wk{color: #e35925;}
-.date ul .act_date{background: #ff6600;color: #fff;}
+.date ul .act_date{background: #87CEFA;color: #fff;}
 .date ul .act_ds{background: #005bac;color: #fff;}
+.date ul .act_weizuo{background: #ff0000;color: #fff;}
+.date ul .act_yizuo{background: #66FF99;color: #fff;}
+.date ul .act_wutimu{background: #dddddd;color: #fff;}
 

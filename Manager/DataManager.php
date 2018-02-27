@@ -32,9 +32,11 @@ switch ($action){
     case 'confirm':
         Confirm();
         break;
-    case 'SetAnswer':
-        SubmitAnswer();
+
+    case 'judgestate':
+        JudgeState();
         break;
+
 }
 
 //注册
@@ -161,30 +163,91 @@ function Confirm()
         return;
     }
 }
-function SubmitAnswer()
-{
+
+function JudgeState(){
 
     //判断传入参数是否正确
-    if (!isset($_REQUEST["answer"]) || empty($_REQUEST["answer"])) {
-        echo json_encode('没有传入answer或为空');
+    if(!isset($_REQUEST["username"]) || empty($_REQUEST["username"])){
+        echo json_encode('没有传入username或为空');
+        return;
+    }
+    if(!isset($_REQUEST["questiondate"]) || empty($_REQUEST["questiondate"])){
+        echo json_encode('没有传入 questiondate 或为空');
         return;
     }
 
 
     //获取参数
-    $answer = $_REQUEST["answer"];
+    $username=$_REQUEST["username"];
+    $date=$_REQUEST["questiondate"];
 
-    $pdo = ConnectMysql();
-        $insertsql = "INSERT INTO `questiontable` (`answer`) VALUES ('$answer')";
-        //exec执行SQL语句增删改查，返回影响行数
-        $execres = $pdo->exec($insertsql);
-        if ($execres) {
-            echo json_encode(1);
-            return;
-        } else {
-            echo json_encode('提交失败' . $execres);
+    //数据库相关
+    $pdo =ConnectMysql();
+    //判断是否有题目
+    $sql="select ID from qctable WHERE SetTime = '$date'";
+    //query查询SQL语句，返回PDOstatement对象
+    $res=$pdo->query($sql);
+    $QID=$res->fetchAll(PDO::FETCH_ASSOC);
+    if(!$QID){
+        //本日期没有题目
+
+        $data = array('data'=> 3,'day'=>$date);
+        echo json_encode($data);
+        return;
+    }
+
+    //判断该学生的分组，不显示的题目返回没有题目
+    $sqlusergroup="select * from mytable WHERE username='$username'";
+    $resusergroup=$pdo->query($sqlusergroup);
+    $group=$resusergroup->fetch(PDO::FETCH_ASSOC);
+    if($group['group']==1){
+        //每周四一起显示
+        //$da 一~日 ： 1234560
+        $da = date("w");
+        if($da >= 4 || $da==0){
+            //星期四~星期日
+            //获取本周四日期,日期小于此日期可以显示
+            //本周1
+            $thursday=date('Ymd',strtotime("-1 thursday"));
+            //$thursday2=date('Ymd',strtotime("-2 thursday"));
+        }
+        else{
+            //获取上周四
+            $thursday=date('Ymd',strtotime('-2 thursday', time()));
+        }
+        if($date>$thursday){
+            //日期未到
+            //显示为没有题目，返回3
+            $data = array('data'=> 3,'day'=>$date);
+            echo json_encode($data);
             return;
         }
+    }
+
+    //获取日期对应的所有题目，判断该学生是否所有题目都做了
+    $QuestionState=true;
+    foreach ($QID as $id){
+        $thisid=$id['ID'];
+        $thissql="select * from studentdata WHERE QuestionID='$thisid' And UserName='$username'";
+        $thisres=$pdo->query($thissql);
+        $resultdata=$thisres->fetch(PDO::FETCH_ASSOC);
+        if(!$resultdata){
+            $QuestionState=false;
+            break;
+        }
+    }
+    if($QuestionState){
+        //本日题全部答了
+        $data = array('data'=> 1,'day'=>$date);
+        echo json_encode($data);
+        return;
+    }else{
+        //有题目但未答完
+        $data = array('data'=> 0,'day'=>$date);
+        echo json_encode($data);
+        return;
+    }
+
 }
 //数据库连接
 function ConnectMysql(){

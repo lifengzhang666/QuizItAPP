@@ -32,26 +32,22 @@
 
 <script>
     function ShowReview(){
+        var sessname=$.cookie('username');
         //取数据显示在页面
         $.ajax({
             url:'Manager/QuestionManager.php',
             type:'POST',
             dataType:'json',
-            data:{act:'showreview'},
+            data:{act:'showreview',username:sessname},
             success:function (result) {
                 if(result.data==1){
                     var reviewArray=result.allreview;
-                    //遍历数组的每一行，一行是一条评论
+
                     for(i in reviewArray){
                         //点后面是数据库的列名
-                        PutReview(reviewArray[i].QuestionNum,reviewArray[i].quescontent);
-                    }
+                        PutReview(i,reviewArray[i].quescontent,reviewArray[i].ID);
 
-                    //取到数据放到网页上
-                   // var QuestionID=result.questionnum;
-                   // var content=result.question;
-                    //被评论和时间没取
-                   // PutReview(QuestionID,content);
+                    }
 
 
                 }else{
@@ -69,7 +65,7 @@
     //执行一次函数
     ShowReview();
 
-    function PutReview(QuestionNum,questioncontent){
+    function PutReview(QuestionNum,questioncontent,questionid){
         //要append的元素
 
         var ReviewList = document.getElementById('review-list');
@@ -78,12 +74,15 @@
         //var textarea = box.getElementsByClassName('comment')[0];
         //生成一个div元素
         var ReviewBox = document.createElement('div');
+        console.log(typeof (parseInt(QuestionNum)));
+        var n=parseInt(QuestionNum)+1;
         ReviewBox.className = 'ReviewDiv';
         ReviewBox.innerHTML =
             '<div class="ReviewDiv" style="margin-top:30px">'+
-            '第<span id="tihao">' + QuestionNum + '</span>题:'+
+            '第<span id="tihao">' + n + '</span>题:'+
             '<span id="xiangqing">' + questioncontent +'</span>'+
-            '<a href="#" ><img src="img/jinru.png" style="float:right"/></a>'+
+			'<span style="display: none" id="reviewquestion">'+questionid+'</span>'+
+            '<a href="review-question.html"  onclick="tiaozhuan('+questionid+')"><img src="img/jinru.png" style="float:right"/></a>'+
             '</div>';
 
         //此处是将ReviewBox添加到ReviewList里面
@@ -91,6 +90,11 @@
 
 
     }
+function tiaozhuan(questionid) {
+     $.cookie('questionid', questionid);
+    window.location.href='review-question.html';
+}
+
 </script>
 </body>
 </html>

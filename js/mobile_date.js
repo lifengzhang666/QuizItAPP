@@ -59,10 +59,17 @@ function datt(nian,yue,ri){
     var html='';
     for(var i=1;i<=days;i++){
         var time=new Date(nian,yue,i).getTime();
-        if(yue<=9){
+        if(yue<=9 && i<=9){
+            html+="<li data-jr="+yue+"-"+ i +" data-id="+time+" data-date="+ nian+"0"+yue+"0"+i+"><span>"+i+"</span></li>"
+        }
+        else if(yue<=9){
             html+="<li data-jr="+yue+"-"+ i +" data-id="+time+" data-date="+ nian+"0"+yue+i+"><span>"+i+"</span></li>"
-        }else{
-           // html+="<li data-jr="+yue+"-"+ i +" data-id="+time+" data-date="+ nian+yue+i+"><a href='calendar-question.html' style='color: #3D3D3D;line-height: 3.5em'>"+i+"</a></li>"
+        }
+        else if(i<=9){
+            html+="<li data-jr="+yue+"-"+ i +" data-id="+time+" data-date="+ nian+yue+"0"+i+"><span>"+i+"</span></li>"
+        }
+        else{
+            // html+="<li data-jr="+yue+"-"+ i +" data-id="+time+" data-date="+ nian+yue+i+"><a href='calendar-question.html' style='color: #3D3D3D;line-height: 3.5em'>"+i+"</a></li>"
             html+="<li data-jr="+yue+"-"+ i +" data-id="+time+" data-date="+ nian+yue+i+"><span>"+i+"</span></li>"
         }
     }
@@ -81,21 +88,112 @@ function datt(nian,yue,ri){
         //attr() 函数返回选择元素的属性值。
         var num=0;
         //判断是否是周六或周日；添加特殊样式
-        var wk=new Date($('.date ul li').eq(k).attr('data-date')).getDay();//getDay()返回一周中的今天
+        var thisday=$('.date ul li').eq(k).attr('data-date');
+        day=thisday.replace(/^(\d{4})(\d{2})(\d{2})$/, "$1-$2-$3");
+        var wk=new Date(day).getDay();//getDay()返回一周中的今天
         if(wk==6||wk==0){
-            $('.date ul li').eq(k).addClass('act_wk')
+            $('.date ul li').eq(k).addClass('act_wk');
         }
-        if(tt_time != td_time||tt_time == td_time){
-            $('.date ul li').eq(k).click(function(){
+        if(tt_time != td_time){
+            $.ajax({
+                url: 'Manager/DataManager.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {act: 'judgestate', username: $.cookie('username'), questiondate:thisday },
+                success: function (result) {
+                    if(result.data===1){
+                        //有题目且已经答题
+                        thisdate=result.day;
+                        $("li[data-date='"+thisdate+"']").addClass('act_yizuo');
+                        // $('.date ul li').eq(k).addClass('act_yizuo');
+                        // $('.date ul li').eq(k).click(function(){
+                        //     var _this=$(this);
+                        //     _this.addClass('act_date');     //选择开始日期
+                        //     _this.siblings('li').removeClass('act_date');
+                        //     var dr=_this.attr('data-date');
+                        //     console.log("选择日期为:"+dr);
+                        //     //不确定内容
+                        //     $.cookie('choosedate',dr);
+                        //     window.location.href='calendar-question.html';
+                        // });
+                        $("li[data-date='"+thisdate+"']").click(function(){
+                            //不确定内容
+                            var _this=$(this);
+                            _this.addClass('act_date');     //选择开始日期
+                            _this.siblings('li').removeClass('act_date');
+                            var dr=_this.attr('data-date');
+                            console.log("选择日期为:"+dr);
+                            $.cookie('choosedate',dr);
+                            window.location.href='calendar-question.html';
+                        });
+                    }else if(result.data===0){
+                        //有题目但未答完
+                        thisdate=result.day;
+                        $("li[data-date='"+thisdate+"']").addClass('act_weizuo');
+                        // $('.date ul li').eq(k).addClass('act_weizuo');
+                        // $('.date ul li').eq(k).click(function(){
+                        //     var _this=$(this);
+                        //     _this.addClass('act_date');     //选择开始日期
+                        //     _this.siblings('li').removeClass('act_date');
+                        //     var dr=_this.attr('data-date');
+                        //     console.log("选择日期为:"+dr);
+                        //     //不确定内容
+                        //     $.cookie('choosedate',dr);
+                        //     window.location.href='calendar-question.html';
+                        // });
+                        $("li[data-date='"+thisdate+"']").click(function(){
+                            var _this=$(this);
+                            _this.addClass('act_date');     //选择开始日期
+                            _this.siblings('li').removeClass('act_date');
+                            var dr=_this.attr('data-date');
+                            console.log("选择日期为:"+dr);
+                            $.cookie('choosedate',dr);
+                            window.location.href='calendar-question.html';
+                        });
+                    }else if(result.data===3){
+                        //没有题目
+                        thisdate=result.day;
+                        $("li[data-date='"+thisdate+"']").addClass('act_wutimu');
+                        $("li[data-date='"+thisdate+"']").click(function(){
+                            //不确定内容
+                            var _this=$(this);
+                            _this.addClass('act_date');     //选择开始日期
+                            _this.siblings('li').removeClass('act_date');
+                            var dr=_this.attr('data-date');
+                            console.log("选择日期为:"+dr);
+                            $.cookie('choosedate',dr);
+                            //window.location.href='calendar-question.html';
+                        });
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
+
+                }
+            });
+
+        }
+        if(tt_time == td_time){
+            $("li[data-date='"+thisday+"']").addClass('act_date');
+            $("li[data-date='"+thisday+"']").click(function(){
                 var _this=$(this);
                 _this.addClass('act_date');     //选择开始日期
                 _this.siblings('li').removeClass('act_date');
                 var dr=_this.attr('data-date');
                 console.log("选择日期为:"+dr);
-                //不确定内容
                 $.cookie('choosedate',dr);
+
                 window.location.href='calendar-question.html';
-            })
+            });
+            // $('.date ul li').eq(k).addClass('act_date');
+            // $('.date ul li').eq(k).click(function(){
+            //     var _this=$(this);
+            //     _this.addClass('act_date');
+            //     _this.siblings('li').removeClass('act_date');
+            //     var dr=_this.attr('data-date');
+            //     // console.log(dr);
+            // });
+
         }
         //
         //将小于今天的日期设为不可点击状态

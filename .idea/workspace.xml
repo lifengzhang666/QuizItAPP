@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c743fe8-a0e2-461b-82dd-01104704b53e" name="Default" comment="Merge branch 'master' of https://github.com/lifengzhang666/QuizItAPP&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="4c743fe8-a0e2-461b-82dd-01104704b53e" name="Default" comment="完成出多道题目">
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/A.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/B.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/C.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/D.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/background.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/background1.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/correct.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/error.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Manager/DataManager.php" afterPath="$PROJECT_DIR$/Manager/DataManager.php" />
+      <change beforePath="$PROJECT_DIR$/Manager/QuestionManager.php" afterPath="$PROJECT_DIR$/Manager/QuestionManager.php" />
+      <change beforePath="$PROJECT_DIR$/TodayQuestion.html" afterPath="$PROJECT_DIR$/TodayQuestion.html" />
+      <change beforePath="$PROJECT_DIR$/calendar-question.html" afterPath="$PROJECT_DIR$/calendar-question.html" />
+      <change beforePath="$PROJECT_DIR$/calendar.html" afterPath="$PROJECT_DIR$/calendar.html" />
+      <change beforePath="$PROJECT_DIR$/css/comment.css" afterPath="$PROJECT_DIR$/css/comment.css" />
+      <change beforePath="$PROJECT_DIR$/css/mobile_date.css" afterPath="$PROJECT_DIR$/css/mobile_date.css" />
+      <change beforePath="$PROJECT_DIR$/css/register.css" afterPath="$PROJECT_DIR$/css/register.css" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change beforePath="$PROJECT_DIR$/js/jquery-1.4.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/js/mobile_date.js" afterPath="$PROJECT_DIR$/js/mobile_date.js" />
+      <change beforePath="$PROJECT_DIR$/login.html" afterPath="$PROJECT_DIR$/login.html" />
+      <change beforePath="$PROJECT_DIR$/register.html" afterPath="$PROJECT_DIR$/register.html" />
+      <change beforePath="$PROJECT_DIR$/review.html" afterPath="$PROJECT_DIR$/review.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,148 +42,162 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="testschema@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="testschema@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="testschema@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="testschema: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="testschema@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="testschema: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="commenttable: table" type="98d5ac3d:MysqlImplModel$Table" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/register.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3960">
-              <caret line="132" column="94" lean-forward="false" selection-start-line="132" selection-start-column="94" selection-end-line="132" selection-end-column="94" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="calendar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/calendar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1410">
-              <caret line="47" column="98" lean-forward="false" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="98" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chuti.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chuti.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3840">
-              <caret line="128" column="12" lean-forward="false" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="12" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#4;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#label#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#6;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#label#0;n#div#6;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#7;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataManager.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Manager/DataManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-              <folding>
-                <element signature="n#ConnectMysql#0;n#!!top" expanded="false" />
-                <marker date="1516710840385" expanded="true" signature="1264:1312" ph="select * fro... mytable" />
-                <marker date="1516710840385" expanded="true" signature="1536:1629" ph="INSERT INTO `mytable`... " />
-                <marker date="1516710840385" expanded="true" signature="2329:2397" ph="select * fro... mytable" />
-                <marker date="1516710840385" expanded="true" signature="3895:3952" ph="INSERT INTO `questiontable`... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TodayQuestion-test.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TodayQuestion-test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2790">
-              <caret line="153" column="9" lean-forward="false" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6120">
-              <caret line="204" column="40" lean-forward="false" selection-start-line="204" selection-start-column="40" selection-end-line="204" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TodayQuestion.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TodayQuestion.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+            <state relative-caret-position="116">
+              <caret line="182" column="64" lean-forward="false" selection-start-line="182" selection-start-column="58" selection-end-line="182" selection-end-column="64" />
               <folding>
-                <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#7409#7424#0" expanded="false" />
-                <element signature="e#7934#9348#0" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1519749206837" expanded="true" signature="8067:8080" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="8476:8493" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="8622:8639" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="8770:8787" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="8945:8962" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="9070:9084" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="9921:9938" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="10062:10115" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="10062:10164" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="10219:10253" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="10220:10253" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="10424:10472" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="10424:10541" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="10639:10657" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="10763:10811" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="10763:10880" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="10979:10997" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="11103:11151" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="11103:11220" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="11318:11336" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="11442:11490" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="11442:11559" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="11657:11675" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="11808:11816" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="11808:11820" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="12033:12041" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="12033:12045" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="12201:12278" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="12201:12297" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="12201:12315" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="12503:12579" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="12503:12596" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="12697:12737" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="12697:12740" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="13044:13058" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="13206:13220" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="13511:13550" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="16043:16055" ph="..." />
+                <marker date="1519749206837" expanded="true" signature="16043:16080" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comment.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/comment.js">
+      <file leaf-file-name="review-question.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/review-question.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+            <state relative-caret-position="-240">
+              <caret line="37" column="22" lean-forward="false" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
               <folding>
-                <marker date="1516696061209" expanded="true" signature="2742:2757" ph="..." />
+                <marker date="1519630591813" expanded="true" signature="12173:12186" ph="..." />
+                <marker date="1519630591813" expanded="true" signature="12542:12559" ph="..." />
+                <marker date="1519630591813" expanded="true" signature="12687:12704" ph="..." />
+                <marker date="1519630591813" expanded="true" signature="12835:12852" ph="..." />
+                <marker date="1519630591813" expanded="true" signature="12998:13015" ph="..." />
+                <marker date="1519630591813" expanded="true" signature="13117:13131" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuestionManager.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QuestionManager.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Manager/QuestionManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5430">
-              <caret line="243" column="53" lean-forward="false" selection-start-line="243" selection-start-column="53" selection-end-line="243" selection-end-column="53" />
+            <state relative-caret-position="128">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
-                <element signature="n#Login#0;n#!!top" expanded="false" />
-                <element signature="n#SubmitAnswer#0;n#!!top" expanded="false" />
-                <marker date="1516699187509" expanded="true" signature="1336:1384" ph="select * fro... mytable" />
-                <marker date="1516699187509" expanded="true" signature="1608:1701" ph="INSERT INTO `mytable`... " />
-                <marker date="1516699187509" expanded="true" signature="4713:4870" ph="INSERT INTO `qctable`... " />
-                <marker date="1516699187509" expanded="true" signature="5226:5269" ph="select * fro... qctable" />
+                <element signature="n#SubmitComment#0;n#!!top" expanded="false" />
+                <element signature="e#9215#9337#0#PHP" expanded="false" />
+                <element signature="n#DeleteComment#0;n#!!top" expanded="false" />
+                <element signature="n#LikeComment#0;n#!!top" expanded="false" />
+                <marker date="1519749795715" expanded="true" signature="1902:1950" ph="select * fro... mytable" />
+                <marker date="1519749795715" expanded="true" signature="2174:2267" ph="INSERT INTO `mytable`... " />
+                <marker date="1519749795715" expanded="true" signature="2967:3035" ph="select * fro... mytable" />
+                <marker date="1519749795715" expanded="true" signature="4349:4480" ph="INSERT INTO `studentdata`... " />
+                <marker date="1519749795715" expanded="true" signature="6035:6213" ph="INSERT INTO `qctable`... " />
+                <marker date="1519749795715" expanded="true" signature="6627:6675" ph="select * fro... mytable" />
+                <marker date="1519749795715" expanded="true" signature="7396:7439" ph="select * fro... qctable" />
+                <marker date="1519749795715" expanded="true" signature="9053:9129" ph="select * fro... commenttable" />
+                <marker date="1519749795715" expanded="true" signature="9366:9416" ph="select * fro... commenttable" />
+                <marker date="1519749795715" expanded="true" signature="9844:9917" ph="select * fro... liketable" />
+                <marker date="1519749795715" expanded="true" signature="10749:10883" ph="SELECT qctab... qctable" />
+                <marker date="1519749795715" expanded="true" signature="10821:10882" ph="select Quest... studentdata" />
+                <marker date="1519749795715" expanded="true" signature="13864:13912" ph="select * fro... mytable" />
+                <marker date="1519749795715" expanded="true" signature="14640:14689" ph="select * fro... qctable" />
+                <marker date="1519749795715" expanded="true" signature="15181:15225" ph="select * fro... qctable" />
+                <marker date="1519749795715" expanded="true" signature="16063:16140" ph="select * fro... liketable" />
+                <marker date="1519749795715" expanded="true" signature="16427:16502" ph="UPDATE `commenttable`... " />
+                <marker date="1519749795715" expanded="true" signature="16596:16690" ph="DELETE FROM `testschema`.`liketable`... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calendar-question.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/calendar-question.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8142">
+              <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+              <folding>
+                <marker date="1519368341243" expanded="true" signature="7780:7793" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="8157:8174" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="8303:8320" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="8451:8468" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="8626:8643" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="8751:8765" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="9714:9785" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="9840:9876" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="10047:10095" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="10289:10337" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="10532:10580" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="10774:10822" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="11043:11056" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="11244:11257" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="11412:11489" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="11677:11753" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="11854:11897" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="12201:12215" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="12363:12377" ph="..." />
+                <marker date="1519368341243" expanded="true" signature="14924:14936" ph="..." />
               </folding>
             </state>
           </provider>
@@ -173,20 +208,47 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>InputCheck</find>
-      <find>echo</find>
-      <find>btn</find>
-      <find>a-radio</find>
-      <find>tigan</find>
+      <find>fold</find>
+      <find>fa-angle-double-down</find>
+      <find>list</find>
+      <find>quescom-box</find>
+      <find>Ransdiv</find>
+      <find>TrueAnswer</find>
+      <find>getElementById</find>
+      <find>getElements</find>
+      <find>item</find>
+      <find>TrueItem</find>
+      <find>check</find>
+      <find>Ransdiv'+questionnum+'</find>
+      <find>.form-horizontal .btn</find>
+      <find>no_date</find>
+      <find>ri</find>
+      <find>fetcha</find>
+      <find>for</find>
+      <find>cookie</find>
+      <find>forea</find>
+      <find>act_date</find>
+      <find>请登录</find>
+      <find>SubmitAnswer</find>
+      <find>showsequence</find>
+      <find>ShowQuestionList</find>
       <find>Numq</find>
+      <find>第</find>
+      <find>赞</find>
+      <find>w</find>
+      <find>win</find>
+      <find>PutComment</find>
     </findStrings>
+    <dirStrings>
+      <dir>C:\xampp\htdocs\GitAPP</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -206,23 +268,33 @@
         <option value="$PROJECT_DIR$/index复制.html" />
         <option value="$PROJECT_DIR$/MyRegister.php" />
         <option value="$PROJECT_DIR$/DataManager.php" />
-        <option value="$PROJECT_DIR$/login.html" />
-        <option value="$PROJECT_DIR$/calendar.html" />
-        <option value="$PROJECT_DIR$/calendar-test.html" />
         <option value="$PROJECT_DIR$/js/question.js" />
-        <option value="$PROJECT_DIR$/css/comment.css" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Manager/Q_DataManager.php" />
         <option value="$PROJECT_DIR$/Manager/QDataManager.php" />
-        <option value="$PROJECT_DIR$/Manager/DataManager.php" />
-        <option value="$PROJECT_DIR$/js/mobile_date.js" />
-        <option value="$PROJECT_DIR$/register.html" />
-        <option value="$PROJECT_DIR$/chuti.html" />
-        <option value="$PROJECT_DIR$/js/comment.js" />
-        <option value="$PROJECT_DIR$/Manager/QuestionManager.php" />
         <option value="$PROJECT_DIR$/TodayQuestion-test-TEST.html" />
-        <option value="$PROJECT_DIR$/TodayQuestion.html" />
+        <option value="$PROJECT_DIR$/chuti.html" />
+        <option value="$PROJECT_DIR$/js/comment-test.js" />
+        <option value="$PROJECT_DIR$/calendar-test.html" />
         <option value="$PROJECT_DIR$/TodayQuestion-test.html" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/111.html" />
+        <option value="$PROJECT_DIR$/new-calendar-question.html" />
+        <option value="$USER_HOME$/Desktop/php/DataManager.php" />
+        <option value="$PROJECT_DIR$/calendar-question.html" />
+        <option value="$PROJECT_DIR$/css/register.css" />
+        <option value="$PROJECT_DIR$/register.html" />
+        <option value="$PROJECT_DIR$/login.html" />
+        <option value="$PROJECT_DIR$/Manager/DataManager.php" />
+        <option value="$PROJECT_DIR$/css/mobile_date.css" />
+        <option value="$PROJECT_DIR$/js/mobile_date.js" />
+        <option value="$PROJECT_DIR$/calendar.html" />
+        <option value="$PROJECT_DIR$/review.html" />
+        <option value="$PROJECT_DIR$/review-question.html" />
+        <option value="$PROJECT_DIR$/css/comment.css" />
+        <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/js/comment.js" />
+        <option value="$PROJECT_DIR$/TodayQuestion.html" />
+        <option value="$PROJECT_DIR$/Manager/QuestionManager.php" />
       </list>
     </option>
   </component>
@@ -236,16 +308,37 @@
   <component name="PhpServers">
     <servers>
       <server host="127.0.0.1" id="b92366c6-7ff2-47be-be57-4614b0efdc87" name="localhost" port="8080" />
+      <server host="localhost" id="b204347b-00f7-4a1b-86cc-6ae7ba3f13fb" name="localhost (1)" port="8080" />
     </servers>
   </component>
   <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://127.0.0.1:8080" />
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
   <component name="PhpXdebugProxy" ide_key="local" host="localhost" port="9000" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="49" />
-    <option name="y" value="25" />
+    <option name="x" value="54" />
+    <option name="y" value="5" />
     <option name="width" value="1135" />
-    <option name="height" value="735" />
+    <option name="height" value="728" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>SQL</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -263,7 +356,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -274,12 +366,28 @@
             <path>
               <item name="GitAPP" type="b2602c69:ProjectViewProjectNode" />
               <item name="GitAPP" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="GitAPP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GitAPP" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="img" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="GitAPP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GitAPP" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="GitAPP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GitAPP" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Manager" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches">
         <subPane>
           <expand>
@@ -305,13 +413,21 @@
     <property name="js.buildTools.gulp.gulp_package_dir" value="" />
     <property name="js.buildTools.grunt.grunt-cli.package" value="" />
     <property name="nodejs.protractor.protractor_package" value="" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../php/php.exe" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="last_opened_file_path" value="F:/QuizIT素材/评论" />
     <property name="SearchEverywhereHistoryKey" value="right&#9;null&#9;null" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\GitAPP\img" />
       <recent name="C:\xampp\htdocs\GitAPP" />
+      <recent name="C:\xampp\htdocs\GitAPP\js" />
       <recent name="C:\xampp\htdocs\GitAPP\Manager" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -331,7 +447,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHP Web Page.PHPtodayquestion">
+  <component name="RunManager" selected="PHP Web Page.PHPQuestionManager">
     <configuration default="true" type="AppEnginePhpConfigurationType" factoryName="App Engine for PHP" session_id="" />
     <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
       <PhpTestRunnerSettings method="" />
@@ -345,10 +461,10 @@
     <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
       <PhpTestRunnerSettings method="" />
     </configuration>
+    <configuration name="PHPQuestionManager" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" server_name="localhost" start_url="/GitAPP/Manager/QuestionManager.php" />
     <configuration name="PHPchuti" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" server_name="localhost" start_url="/GitAPP/chuti.html" />
-    <configuration name="PHPquestion" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" server_name="localhost" start_url="/GitAPP/Manager/QuestionManager.php" />
     <configuration name="PHPregister" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" server_name="localhost" start_url="/QuizIt/register.html" />
-    <configuration name="PHPtodayquestion" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" server_name="localhost" start_url="/GitAPP/TodayQuestion-test.html" />
+    <configuration name="PHPreview" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" server_name="localhost" start_url="/GitAPP/review.html" />
     <configuration name="ZLFregister" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" server_name="localhost" start_url="/GitAPP/register.html" />
     <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="localhost" />
     <configuration default="true" type="ReactNative" factoryName="React Native">
@@ -456,9 +572,9 @@
     </configuration>
     <list size="8">
       <item index="0" class="java.lang.String" itemvalue="PHP Web Page.PHPregister" />
-      <item index="1" class="java.lang.String" itemvalue="PHP Web Page.PHPquestion" />
+      <item index="1" class="java.lang.String" itemvalue="PHP Web Page.PHPQuestionManager" />
       <item index="2" class="java.lang.String" itemvalue="PHP Web Page.PHPchuti" />
-      <item index="3" class="java.lang.String" itemvalue="PHP Web Page.PHPtodayquestion" />
+      <item index="3" class="java.lang.String" itemvalue="PHP Web Page.PHPreview" />
       <item index="4" class="java.lang.String" itemvalue="PHP Web Page.ZLFregister" />
       <item index="5" class="java.lang.String" itemvalue="JavaScript Debug.register.html" />
       <item index="6" class="java.lang.String" itemvalue="PHP Script.MyRegister.php" />
@@ -508,7 +624,45 @@
       <workItem from="1516674131224" duration="6527000" />
       <workItem from="1516686374301" duration="13440000" />
       <workItem from="1516708439524" duration="2229000" />
-      <workItem from="1516710707799" duration="173000" />
+      <workItem from="1516710707799" duration="286000" />
+      <workItem from="1516716610878" duration="3604000" />
+      <workItem from="1516758724556" duration="10021000" />
+      <workItem from="1516773125686" duration="15986000" />
+      <workItem from="1516794095348" duration="10606000" />
+      <workItem from="1516842816918" duration="31664000" />
+      <workItem from="1516884271505" duration="6989000" />
+      <workItem from="1516926953842" duration="2983000" />
+      <workItem from="1516944114790" duration="625000" />
+      <workItem from="1516971006132" duration="5540000" />
+      <workItem from="1516977018320" duration="5147000" />
+      <workItem from="1517025426963" duration="6705000" />
+      <workItem from="1517033851922" duration="7372000" />
+      <workItem from="1517061759158" duration="6345000" />
+      <workItem from="1517141609779" duration="7340000" />
+      <workItem from="1517187842987" duration="22862000" />
+      <workItem from="1517223723384" duration="11165000" />
+      <workItem from="1517275771315" duration="10345000" />
+      <workItem from="1517292015689" duration="18864000" />
+      <workItem from="1517359208494" duration="713000" />
+      <workItem from="1517646712537" duration="1445000" />
+      <workItem from="1517666130162" duration="9380000" />
+      <workItem from="1517715167568" duration="16915000" />
+      <workItem from="1517803501138" duration="19243000" />
+      <workItem from="1517888985857" duration="1760000" />
+      <workItem from="1517926334083" duration="783000" />
+      <workItem from="1517930090733" duration="2123000" />
+      <workItem from="1517993707320" duration="2120000" />
+      <workItem from="1518184931085" duration="3679000" />
+      <workItem from="1518188680106" duration="10000" />
+      <workItem from="1518406712305" duration="4806000" />
+      <workItem from="1518950164504" duration="543000" />
+      <workItem from="1519134959022" duration="1242000" />
+      <workItem from="1519136267334" duration="1581000" />
+      <workItem from="1519355967291" duration="12311000" />
+      <workItem from="1519378166667" duration="13910000" />
+      <workItem from="1519552467099" duration="10578000" />
+      <workItem from="1519616728788" duration="23615000" />
+      <workItem from="1519714120625" duration="18473000" />
     </task>
     <task id="LOCAL-00001" summary="新加很多文件">
       <created>1516106323262</created>
@@ -594,11 +748,67 @@
       <option name="project" value="LOCAL" />
       <updated>1516710303988</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Merge branch 'master' of https://github.com/lifengzhang666/QuizItAPP&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1516710888714</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1516710888714</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Merge branch 'master' of https://github.com/lifengzhang666/QuizItAPP&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1516869067515</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1516869067515</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Merge branch 'master' of https://github.com/lifengzhang666/QuizItAPP&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1516883162897</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1516883162897</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Merge branch 'master' of https://github.com/lifengzhang666/QuizItAPP&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1517042891821</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1517042891821</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Merge branch 'master' of https://github.com/lifengzhang666/QuizItAPP&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1517069307592</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1517069307592</updated>
+    </task>
+    <task id="LOCAL-00018" summary="基本功能已完成">
+      <created>1517217493068</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1517217493068</updated>
+    </task>
+    <task id="LOCAL-00019" summary="完成出多道题目">
+      <created>1517298749614</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1517298749614</updated>
+    </task>
+    <task id="LOCAL-00020" summary="2.4更新">
+      <created>1517675486492</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1517675486492</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121417000" />
+    <option name="totallyTimeSpent" value="450923000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -611,28 +821,52 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17473525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15506808" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42457232" sideWeight="0.5053681" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.49079755" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.49386504" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26022914" sideWeight="0.49079755" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.49079755" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.49079755" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23567921" sideWeight="0.49463192" order="3" side_tool="false" content_ui="tabs" x="41" y="312" width="1304" height="222" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2917981" sideWeight="0.49463192" order="3" side_tool="false" content_ui="tabs" x="41" y="312" width="1304" height="222" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.4969325" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1955836" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3584288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.4969325" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42457232" sideWeight="0.5053681" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12765957" sideWeight="0.49079755" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.49386504" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.49079755" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16641453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19476268" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23567921" sideWeight="0.49463192" order="3" side_tool="false" content_ui="tabs" x="41" y="312" width="1304" height="222" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -679,49 +913,18 @@
     <MESSAGE value="写题目+选项" />
     <MESSAGE value="01232025" />
     <MESSAGE value="Merge branch 'master' of https://github.com/lifengzhang666/QuizItAPP&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/lifengzhang666/QuizItAPP&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="基本功能已完成" />
+    <MESSAGE value="完成出多道题目" />
+    <MESSAGE value="2.4更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.4更新" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="46" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/register.html" />
-    <entry file="file://$PROJECT_DIR$/11111.html" />
-    <entry file="file://$PROJECT_DIR$/222222.html" />
-    <entry file="file://$PROJECT_DIR$/33333.html" />
-    <entry file="file://$PROJECT_DIR$/55555.html" />
-    <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/jk.html" />
-    <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/11111.html" />
-    <entry file="file://$PROJECT_DIR$/222222.html" />
-    <entry file="file://$PROJECT_DIR$/33333.html" />
-    <entry file="file://$PROJECT_DIR$/55555.html" />
-    <entry file="file://$PROJECT_DIR$/jk.html" />
-    <entry file="file://$PROJECT_DIR$/aaaa.php" />
-    <entry file="file://$PROJECT_DIR$/../cnpitc-m-tpl-0810/test.php" />
-    <entry file="file://$PROJECT_DIR$/../通用.php" />
-    <entry file="file://$PROJECT_DIR$/../../php/php.ini" />
-    <entry file="file://$PROJECT_DIR$/test.php" />
-    <entry file="file://$PROJECT_DIR$/index复制.html" />
-    <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/index-test.html" />
-    <entry file="file://$PROJECT_DIR$/DataManager复制.php" />
-    <entry file="file://$PROJECT_DIR$/indexCon.php" />
-    <entry file="file://$PROJECT_DIR$/MyRegister.php" />
-    <entry file="file://$PROJECT_DIR$/js/jquery-1.4.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataManager.php" />
     <entry file="file://$PROJECT_DIR$/Manage/DataManager.php" />
     <entry file="file://$PROJECT_DIR$/Manager/indexCon.php" />
@@ -732,131 +935,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/comment.css">
+    <entry file="file://$PROJECT_DIR$/js/question.js" />
+    <entry file="file://$PROJECT_DIR$/Manager/Q_DataManager.php" />
+    <entry file="file://$PROJECT_DIR$/Manager/QDataManager.php" />
+    <entry file="file://$PROJECT_DIR$/js/jquery.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+        <state relative-caret-position="471">
+          <caret line="2" column="19640" lean-forward="false" selection-start-line="2" selection-start-column="19640" selection-end-line="2" selection-end-column="19640" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
+    <entry file="file://$PROJECT_DIR$/TodayQuestion-test-TEST.html" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-450">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calendar-test.html">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="24" column="6" lean-forward="true" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+        <state relative-caret-position="-420">
+          <caret line="14927" column="14" lean-forward="false" selection-start-line="14927" selection-start-column="14" selection-end-line="14927" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/question.js" />
+    <entry file="file://$PROJECT_DIR$/11111TodayQuestion.html" />
+    <entry file="file://$PROJECT_DIR$/js/jquery.flexText.js" />
+    <entry file="file://F:/QuizIT素材/评论/5a680be7b4fa1/js/jquery.flexText.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/ae34d007/8888fb31-3ac7-442e-8957-bdd2b441bff8/testschema.commenttable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8888fb31-3ac7-442e-8957-bdd2b441bff8/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery-1.8.3.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/comment-test.js" />
+    <entry file="file://$PROJECT_DIR$/js/calendar-price-jquery.js" />
+    <entry file="file://$PROJECT_DIR$/calendar-test.html" />
+    <entry file="file://$PROJECT_DIR$/TodayQuestion-test.html" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="210">
-            <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <first_editor relative-caret-position="390">
+            <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/Q_DataManager.php" />
-    <entry file="file://$PROJECT_DIR$/Manager/QDataManager.php" />
-    <entry file="file://$PROJECT_DIR$/js/mobile_date.js">
+    <entry file="file://$PROJECT_DIR$/js/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calendar.html">
+    <entry file="file://$PROJECT_DIR$/calendar-question-NEW.html" />
+    <entry file="file://$USER_HOME$/Desktop/php/DataManager.php" />
+    <entry file="file://$PROJECT_DIR$/chuti.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
-          <caret line="47" column="98" lean-forward="false" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="98" />
-          <folding />
+        <state relative-caret-position="390">
+          <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/jquery.min.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="2" column="19640" lean-forward="false" selection-start-line="2" selection-start-column="19640" selection-end-line="2" selection-end-column="19640" />
-          <folding />
+        <state relative-caret-position="138">
+          <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TodayQuestion-test-TEST.html" />
-    <entry file="file://$PROJECT_DIR$/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3960">
-          <caret line="132" column="94" lean-forward="false" selection-start-line="132" selection-start-column="94" selection-end-line="132" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/comment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-          <folding>
-            <marker date="1516696061209" expanded="true" signature="2742:2757" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/QuestionManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5430">
-          <caret line="243" column="53" lean-forward="false" selection-start-line="243" selection-start-column="53" selection-end-line="243" selection-end-column="53" />
-          <folding>
-            <element signature="n#Login#0;n#!!top" expanded="false" />
-            <element signature="n#SubmitAnswer#0;n#!!top" expanded="false" />
-            <marker date="1516699187509" expanded="true" signature="1336:1384" ph="select * fro... mytable" />
-            <marker date="1516699187509" expanded="true" signature="1608:1701" ph="INSERT INTO `mytable`... " />
-            <marker date="1516699187509" expanded="true" signature="4713:4870" ph="INSERT INTO `qctable`... " />
-            <marker date="1516699187509" expanded="true" signature="5226:5269" ph="select * fro... qctable" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TodayQuestion.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-          <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#7409#7424#0" expanded="false" />
-            <element signature="e#7934#9348#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TodayQuestion-test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2790">
-          <caret line="153" column="9" lean-forward="false" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6120">
-          <caret line="204" column="40" lean-forward="false" selection-start-line="204" selection-start-column="40" selection-end-line="204" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/new-calendar-question.html" />
+    <entry file="file://$PROJECT_DIR$/js/sideToggleExtended.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -864,42 +1036,287 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chuti.html">
+    <entry file="file://$PROJECT_DIR$/111.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3840">
-          <caret line="128" column="12" lean-forward="false" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#4;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#label#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#label#0;n#div#6;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="960">
+          <caret line="32" column="39" lean-forward="false" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery-1.4.min.js" />
+    <entry file="file://F:/QuizIT素材/日历/js/jquery-1.4.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/QuizIT素材/5a6e92e4de893/calendar-price-jquery.js" />
+    <entry file="file://$PROJECT_DIR$/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="90" column="23" lean-forward="false" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/QuizIT素材/5a6e92e4de893/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19290">
+          <caret line="656" column="46" lean-forward="false" selection-start-line="656" selection-start-column="46" selection-end-line="656" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/normalize.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="49" lean-forward="false" selection-start-line="0" selection-start-column="49" selection-end-line="0" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="83" column="11" lean-forward="false" selection-start-line="60" selection-start-column="8" selection-end-line="83" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/mobile_date.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Manager/DataManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+        <state relative-caret-position="30">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="n#ConnectMysql#0;n#!!top" expanded="false" />
-            <marker date="1516710840385" expanded="true" signature="1264:1312" ph="select * fro... mytable" />
-            <marker date="1516710840385" expanded="true" signature="1536:1629" ph="INSERT INTO `mytable`... " />
-            <marker date="1516710840385" expanded="true" signature="2329:2397" ph="select * fro... mytable" />
-            <marker date="1516710840385" expanded="true" signature="3895:3952" ph="INSERT INTO `questiontable`... " />
+            <marker date="1519617580656" expanded="true" signature="1445:1493" ph="select * fro... mytable" />
+            <marker date="1519617580656" expanded="true" signature="1717:1829" ph="INSERT INTO `mytable`... " />
+            <marker date="1519617580656" expanded="true" signature="2529:2597" ph="select * fro... mytable" />
+            <marker date="1519617580656" expanded="true" signature="4301:4329" ph="select ID fr... qctable" />
+            <marker date="1519617580656" expanded="true" signature="4301:4330" ph="select ID fr... qctable" />
+            <marker date="1519617580656" expanded="true" signature="4301:4340" ph="select ID fr... qctable" />
+            <marker date="1519617580656" expanded="true" signature="4301:4342" ph="select ID fr... qctable" />
+            <marker date="1519617580656" expanded="true" signature="4301:4346" ph="select ID fr... qctable" />
+            <marker date="1519617580656" expanded="true" signature="4301:4347" ph="select ID fr... qctable" />
+            <marker date="1519617580656" expanded="true" signature="4642:4690" ph="select * fro... mytable" />
+            <marker date="1519617580656" expanded="true" signature="5570:5614" ph="select * fro... studentdata" />
+            <marker date="1519617580656" expanded="true" signature="5570:5647" ph="select * fro... liketable" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/register.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="24" column="4" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="25" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calendar-question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8142">
+          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+          <folding>
+            <marker date="1519368341243" expanded="true" signature="7780:7793" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="8157:8174" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="8303:8320" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="8451:8468" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="8626:8643" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="8751:8765" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="9714:9785" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="9840:9876" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="10047:10095" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="10289:10337" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="10532:10580" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="10774:10822" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="11043:11056" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="11244:11257" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="11412:11489" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="11677:11753" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="11854:11897" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="12201:12215" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="12363:12377" ph="..." />
+            <marker date="1519368341243" expanded="true" signature="14924:14936" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/review.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="59" column="31" lean-forward="false" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
+          <folding>
+            <marker date="1519628875426" expanded="true" signature="2513:2528" ph="..." />
+            <marker date="1519628875426" expanded="true" signature="2668:2681" ph="..." />
+            <marker date="1519628875426" expanded="true" signature="2840:2851" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/comment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="168" column="32" lean-forward="true" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
+          <folding>
+            <marker date="1519748872337" expanded="true" signature="8164:8181" ph="..." />
+            <marker date="1519748872337" expanded="true" signature="8288:8305" ph="..." />
+            <marker date="1519748872337" expanded="true" signature="8387:8404" ph="..." />
+            <marker date="1519748872337" expanded="true" signature="8493:8507" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="89" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calendar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="57" column="62" lean-forward="false" selection-start-line="57" selection-start-column="61" selection-end-line="57" selection-end-column="66" />
+          <folding>
+            <element signature="n#style#0;n#rect#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#svg#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#rect#0;n#svg#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#svg#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#svg#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#rect#0;n#svg#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#svg#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#svg#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#rect#0;n#svg#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#svg#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/comment.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="47" lean-forward="false" selection-start-line="0" selection-start-column="47" selection-end-line="0" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/mobile_date.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="185" column="16" lean-forward="false" selection-start-line="185" selection-start-column="16" selection-end-line="185" selection-end-column="62" />
+          <folding>
+            <element signature="e#3504#3552#0" expanded="false" />
+            <element signature="e#4952#5001#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/review-question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="37" column="22" lean-forward="false" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+          <folding>
+            <marker date="1519630591813" expanded="true" signature="12173:12186" ph="..." />
+            <marker date="1519630591813" expanded="true" signature="12542:12559" ph="..." />
+            <marker date="1519630591813" expanded="true" signature="12687:12704" ph="..." />
+            <marker date="1519630591813" expanded="true" signature="12835:12852" ph="..." />
+            <marker date="1519630591813" expanded="true" signature="12998:13015" ph="..." />
+            <marker date="1519630591813" expanded="true" signature="13117:13131" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TodayQuestion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="182" column="64" lean-forward="false" selection-start-line="182" selection-start-column="58" selection-end-line="182" selection-end-column="64" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1519749206837" expanded="true" signature="8067:8080" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="8476:8493" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="8622:8639" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="8770:8787" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="8945:8962" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="9070:9084" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="9921:9938" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="10062:10115" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="10062:10164" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="10219:10253" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="10220:10253" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="10424:10472" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="10424:10541" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="10639:10657" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="10763:10811" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="10763:10880" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="10979:10997" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="11103:11151" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="11103:11220" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="11318:11336" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="11442:11490" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="11442:11559" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="11657:11675" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="11808:11816" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="11808:11820" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="12033:12041" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="12033:12045" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="12201:12278" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="12201:12297" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="12201:12315" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="12503:12579" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="12503:12596" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="12697:12737" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="12697:12740" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="13044:13058" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="13206:13220" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="13511:13550" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="16043:16055" ph="..." />
+            <marker date="1519749206837" expanded="true" signature="16043:16080" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Manager/QuestionManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="n#SubmitComment#0;n#!!top" expanded="false" />
+            <element signature="e#9215#9337#0#PHP" expanded="false" />
+            <element signature="n#DeleteComment#0;n#!!top" expanded="false" />
+            <element signature="n#LikeComment#0;n#!!top" expanded="false" />
+            <marker date="1519749795715" expanded="true" signature="1902:1950" ph="select * fro... mytable" />
+            <marker date="1519749795715" expanded="true" signature="2174:2267" ph="INSERT INTO `mytable`... " />
+            <marker date="1519749795715" expanded="true" signature="2967:3035" ph="select * fro... mytable" />
+            <marker date="1519749795715" expanded="true" signature="4349:4480" ph="INSERT INTO `studentdata`... " />
+            <marker date="1519749795715" expanded="true" signature="6035:6213" ph="INSERT INTO `qctable`... " />
+            <marker date="1519749795715" expanded="true" signature="6627:6675" ph="select * fro... mytable" />
+            <marker date="1519749795715" expanded="true" signature="7396:7439" ph="select * fro... qctable" />
+            <marker date="1519749795715" expanded="true" signature="9053:9129" ph="select * fro... commenttable" />
+            <marker date="1519749795715" expanded="true" signature="9366:9416" ph="select * fro... commenttable" />
+            <marker date="1519749795715" expanded="true" signature="9844:9917" ph="select * fro... liketable" />
+            <marker date="1519749795715" expanded="true" signature="10749:10883" ph="SELECT qctab... qctable" />
+            <marker date="1519749795715" expanded="true" signature="10821:10882" ph="select Quest... studentdata" />
+            <marker date="1519749795715" expanded="true" signature="13864:13912" ph="select * fro... mytable" />
+            <marker date="1519749795715" expanded="true" signature="14640:14689" ph="select * fro... qctable" />
+            <marker date="1519749795715" expanded="true" signature="15181:15225" ph="select * fro... qctable" />
+            <marker date="1519749795715" expanded="true" signature="16063:16140" ph="select * fro... liketable" />
+            <marker date="1519749795715" expanded="true" signature="16427:16502" ph="UPDATE `commenttable`... " />
+            <marker date="1519749795715" expanded="true" signature="16596:16690" ph="DELETE FROM `testschema`.`liketable`... " />
           </folding>
         </state>
       </provider>
